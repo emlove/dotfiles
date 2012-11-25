@@ -1,0 +1,13 @@
+[user]
+	name = Adam Mills
+	email = adam@armills.info
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[merge]
+[merge]
+[merge]
+	tool = vimdiff
+[core]
+	autocrlf = input

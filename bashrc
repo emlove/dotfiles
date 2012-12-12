@@ -22,6 +22,10 @@ if [[ ! $TERM =~ screen ]]; then
 fi
 
 alias suspend="sudo /usr/sbin/pm-suspend"
+alias reboot="sudo /sbin/reboot"
+alias poweroff="sudo /sbin/poweroff"
+
+alias cplayer="mplayer -vo caca -quiet"
 
 keychain -q ~/.ssh/id_rsa
 . ~/.keychain/$HOSTNAME-sh

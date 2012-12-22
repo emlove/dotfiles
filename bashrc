@@ -17,6 +17,8 @@ fi
 
 # Put your fun stuff here.
 
+export PATH="$PATH:$HOME/.local/bin"
+
 if [[ ! $TERM =~ screen ]]; then
 	exec tmux
 fi

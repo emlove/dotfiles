@@ -1,0 +1,12 @@
+xterm*faceName:     Ubuntu Sans Mono:size=11
+xterm*loginShell:   true
+xterm*Foreground:   lightgray
+xterm*Background:   black
+
+Xcursor.theme:      Vanilla-DMZ-AA
+
+Xft.dpi:            96
+Xft:rgba:           rgb
+Xft.antialias:      true
+Xft.hinting:        true
+Xft.hintstyle:      hintfull

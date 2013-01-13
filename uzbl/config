@@ -221,6 +221,9 @@ set ebind     = @mode_bind global,-insert
 # Middle click open in new window
 @bind  <Button2>  = sh 'if [ "$1" ]; then echo "event REQ_NEW_WINDOW $1" > "$UZBL_FIFO"; else echo "uri $(xclip -o | sed s/\\\@/%40/g)" > "$UZBL_FIFO"; fi' '\@SELECTED_URI'
 
+@cbind   <Button8>  = back
+@cbind   <Button9>  = forward
+
 # --- Keyboard bindings ------------------------------------------------------
 
 # With this command you can enter in any command at runtime when prefixed with
@@ -320,7 +323,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  yy  = sh 'echo -n "$UZBL_TITLE" | xclip'
 
 # Copy current selection and strip it of whitespace
-@cbind  C   = sh 'xclip -o -selection primary | tr -d " " | tr -d "\t" | xclip -i -selection clipboard'
+@cbind  C   = sh 'xclip -o -selection primary | tr -s " " | tr -d "\t" | xclip -i -selection clipboard'
 
 # Clone current window
 @cbind  c   = event REQ_NEW_WINDOW \@uri

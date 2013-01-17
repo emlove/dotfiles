@@ -2,11 +2,19 @@ xterm*faceName:     Ubuntu Sans Mono:size=11
 xterm*loginShell:   true
 xterm*Foreground:   lightgray
 xterm*Background:   black
+xterm*transparent:  true
+
+URxvt.font:         xft:Ubuntu Mono:size=13
+URxvt.foreground:   lightgray
+URxvt.background:   black
+URxvt.scrollBar:    false
+URxvt.transparent:  true
+URxvt.shading:      30
 
 Xcursor.theme:      Vanilla-DMZ-AA
 
-Xft.dpi:            96
-Xft:rgba:           rgb
-Xft.antialias:      true
-Xft.hinting:        true
-Xft.hintstyle:      hintfull
+Xft*dpi:            96
+Xft*rgba:           rgb
+Xft*antialias:      true
+Xft*hinting:        true
+Xft*hintstyle:      hintfull

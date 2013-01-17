@@ -140,6 +140,7 @@ bar {
 focus_follows_mouse no
 
 exec --no-startup-id nm-applet
+exec --no-startup-id sh ~/.fehbg
 
 bindsym $mod+b exec uzbl-browser
 

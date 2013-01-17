@@ -139,6 +139,10 @@ bar {
 
 focus_follows_mouse no
 
+# Window specific configurations
+
+for_window [class="URxvt"] border 1pixel
+
 exec --no-startup-id nm-applet
 exec --no-startup-id sh ~/.fehbg
 

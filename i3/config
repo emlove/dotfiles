@@ -143,6 +143,8 @@ focus_follows_mouse no
 
 for_window [class="URxvt"] border 1pixel
 
+for_window [title="EVE Online Launcher"] floating enable
+
 exec --no-startup-id nm-applet
 exec --no-startup-id feh --no-xinerama --bg-center '/home/adam/wallpaper.png'
 

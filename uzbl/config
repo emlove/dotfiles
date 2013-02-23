@@ -323,7 +323,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  yy  = sh 'echo -n "$UZBL_TITLE" | xclip'
 
 # Copy current selection and strip it of whitespace
-@cbind  C   = sh 'xclip -o -selection primary | tr -s " " | tr -d "\t" | xclip -i -selection clipboard'
+@cbind  C   = sh 'xclip -o -selection primary | tr -s " " | xclip -i -selection clipboard'
 
 # Clone current window
 @cbind  c   = event REQ_NEW_WINDOW \@uri

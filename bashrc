@@ -30,4 +30,4 @@ keychain -q ~/.ssh/id_rsa
 . ~/.keychain/$HOSTNAME-sh
 . ~/.keychain/$HOSTNAME-sh-gpg
 
-export PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
+export PS1="\[\033[01;36m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "

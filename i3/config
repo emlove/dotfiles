@@ -154,3 +154,10 @@ bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -5%; pactl set-sin
 bindsym XF86AudioMute exec ~/.local/bin/toggle-mute
 
 bindsym $mod+Shift+Q exec sh -c "i3lock -i '/home/adam/wallpaper.png'"
+
+# Color theme
+# class                 border  backgr. text    indicator
+client.focused          #285577 #285577 #ffffff #2e9ef4
+client.focused_inactive #5f676a #5f676a #ffffff #484e50
+client.unfocused        #222222 #222222 #888888 #292d2e
+client.urgent           #900000 #900000 #ffffff #900000

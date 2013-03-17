@@ -19,10 +19,6 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
-if [[ ! $TERM =~ screen ]]; then
-	exec tmux
-fi
-
 alias suspend="sudo /usr/sbin/pm-suspend"
 alias reboot="sudo /sbin/reboot"
 alias poweroff="sudo /sbin/poweroff"

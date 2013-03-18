@@ -63,12 +63,12 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 @on_event   REQ_NEW_WINDOW event NEW_WINDOW %s
 
 # Load start handler
-@on_event   LOAD_START     @set_status <span foreground="khaki">wait</span>
+@on_event   LOAD_START     @set_status <span foreground="#B1CBDE">wait</span>
 # Reset the keycmd on navigation
 @on_event   LOAD_START     @set_mode
 
 # Load commit handlers
-@on_event   LOAD_COMMIT    @set_status <span foreground="green">recv</span>
+@on_event   LOAD_COMMIT    @set_status <span foreground="#0067EB">recv</span>
 
   # add some javascript to the page for other 'js' and 'script' commands to access later.
 @on_event   LOAD_COMMIT    js uzbl = {};
@@ -79,7 +79,7 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 #@on_event   LOAD_COMMIT    spawn @scripts_dir/per-site-settings.py @data_home/uzbl/per-site-settings
 
 # Load finish handlers
-@on_event   LOAD_FINISH    @set_status <span foreground="gold">done</span>
+@on_event   LOAD_FINISH    @set_status <span foreground="#5F5F62">done</span>
 @on_event   LOAD_FINISH    spawn @scripts_dir/history.sh
 
 # Switch to insert mode if a (editable) html form is clicked
@@ -102,26 +102,26 @@ set show_status       = 1
 set status_top        = 0
 set status_background = #303030
 
-set modcmd_style      = weight="bold" foreground="red"
-set keycmd_style      = weight="light" foreground="red"
+set modcmd_style      = weight="bold" foreground="#0067EB"
+set keycmd_style      = weight="light" foreground="#0067EB"
 set prompt_style      = foreground="grey"
 set cursor_style      = underline="single"
-set completion_style  = foreground="green"
+set completion_style  = foreground="#B1CBDE"
 set hint_style        = weight="bold"
 
-set mode_section      = <span background="khaki" foreground="black">[\@[\@mode_indicator]\@]</span>
+set mode_section      = <span background="#B1CBDE" foreground="black">[\@[\@mode_indicator]\@]</span>
 set keycmd_section    = [<span \@prompt_style>\@[\@keycmd_prompt]\@</span><span \@modcmd_style>\@modcmd</span><span \@keycmd_style>\@keycmd</span><span \@completion_style>\@completion_list</span>]
-set progress_section  = <span foreground="#606060">\@[\@progress.output]\@</span>
-set scroll_section    = <span foreground="#606060">\@[\@scroll_message]\@</span>
-set uri_section       = <span foreground="#99FF66">\@[\@uri]\@</span>
-set name_section      = <span foreground="khaki">\@[\@NAME]\@</span>
-set status_section    = <span foreground="orange">\@status_message</span>
+set progress_section  = <span foreground="#5F5F62">\@[\@progress.output]\@</span>
+set scroll_section    = <span foreground="#5F5F62">\@[\@scroll_message]\@</span>
+set uri_section       = <span foreground="#5F5F62">\@[\@uri]\@</span>
+set name_section      = <span foreground="#B1CBDE">\@[\@NAME]\@</span>
+set status_section    = <span foreground="#B1CBDE">\@status_message</span>
 set selected_section  = <span foreground="#606060">\@[\@SELECTED_URI]\@</span>
 
 set download_section  = <span foreground="white">\@downloads</span>
 
-set status_format       = <span font_family="monospace">@mode_section @keycmd_section @progress_section @name_section @status_section @scroll_section @selected_section @download_section</span>
-set status_format_right = <span font_family="monospace"><span foreground="#666">uri:</span> @uri_section</span>
+set status_format       = <span font_family="monospace">@mode_section @keycmd_section @progress_section @status_section @scroll_section @selected_section @download_section</span>
+set status_format_right = <span font_family="monospace">@uri_section</span>
 
 set title_format_long = \@keycmd_prompt \@raw_modcmd \@raw_keycmd \@TITLE - Uzbl browser <\@NAME> \@SELECTED_URI
 
@@ -412,7 +412,7 @@ set insert   = @mode_config insert
 set stack    = @mode_config stack
 
 # Command mode config.
-@command  keycmd_style        = foreground="red"
+@command  keycmd_style        = foreground="#0067EB"
 @command  status_background   = #202020
 @command  mode_indicator      = Cmd
 @command  keycmd_events       = 1
@@ -427,7 +427,7 @@ set stack    = @mode_config stack
 @insert   modcmd_updates      = 0
 
 # Multi-stage-binding mode config.
-@stack    keycmd_style        = foreground="red"
+@stack    keycmd_style        = foreground="#0067EB"
 @stack    status_background   = #202020
 @stack    mode_indicator      = Bnd
 @stack    prompt_style        = foreground="#888" weight="light"

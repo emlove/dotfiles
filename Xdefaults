@@ -18,3 +18,28 @@ Xft*rgba:           rgb
 Xft*antialias:      true
 Xft*hinting:        true
 Xft*hintstyle:      hintfull
+
+!black
+*color0:            #000000
+*color8:            #000000
+!!red
+*color1:            #7b3303
+*color9:            #7b3303
+!!green
+*color2:            #426d0f
+*color10:            #426d0f
+!!yellow
+*color3:            #a67b07
+*color11:            #a67b07
+!!blue
+*color4:            #0771a6
+*color12:            #0771a6
+!!magenta
+*color5:            #a6a007
+*color13:            #a6a007
+!!cyan
+*color6:            #008d9a
+*color14:            #008d9a
+!!white
+*color7:            #8a8a8a
+*color15:            #8a8a8a

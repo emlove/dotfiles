@@ -136,7 +136,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
     colors {
-        focused_workspace       #285577 #285577 #eeeeee #2e9ef4
+        focused_workspace       #0771a6 #0071a6 #eeeeee #2e9ef4
         inactive_workspace      #222222 #222222 #888888 #292d2e
 
         background              #000000
@@ -166,7 +166,7 @@ bindsym $mod+Shift+Q exec sh -c "i3lock -i '/home/adam/wallpaper.png'"
 
 # Color theme
 # class                 border  backgr. text    indicator
-client.focused          #285577 #285577 #eeeeee #2e9ef4
+client.focused          #0771a6 #0771a6 #eeeeee #008d9a
 client.focused_inactive #5f676a #5f676a #eeeeee #484e50
 client.unfocused        #222222 #222222 #888888 #292d2e
 client.urgent           #900000 #900000 #ffffff #900000

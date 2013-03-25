@@ -136,7 +136,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
     colors {
-        focused_workspace       #0771a6 #0071a6 #eeeeee #2e9ef4
+        focused_workspace       #0771a6 #0771a6 #eeeeee #2e9ef4
         inactive_workspace      #222222 #222222 #888888 #292d2e
 
         background              #000000

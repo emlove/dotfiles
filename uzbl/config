@@ -68,7 +68,7 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 @on_event   LOAD_START     @set_mode
 
 # Load commit handlers
-@on_event   LOAD_COMMIT    @set_status <span foreground="#0067EB">recv</span>
+@on_event   LOAD_COMMIT    @set_status <span foreground="#0771a6">recv</span>
 
   # add some javascript to the page for other 'js' and 'script' commands to access later.
 @on_event   LOAD_COMMIT    js uzbl = {};
@@ -100,22 +100,22 @@ set stylesheet_uri = file://@config_home/uzbl/style.css
 
 set show_status       = 1
 set status_top        = 0
-set status_background = #303030
+set status_background = #000000
 
-set modcmd_style      = weight="bold" foreground="#0067EB"
-set keycmd_style      = weight="light" foreground="#0067EB"
+set modcmd_style      = weight="bold" foreground="#0771a6"
+set keycmd_style      = weight="light" foreground="#0771a6"
 set prompt_style      = foreground="grey"
 set cursor_style      = underline="single"
 set completion_style  = foreground="#B1CBDE"
 set hint_style        = weight="bold"
 
-set mode_section      = <span background="#B1CBDE" foreground="black">[\@[\@mode_indicator]\@]</span>
+set mode_section      = <span background="#0771a6" foreground="black">[\@[\@mode_indicator]\@]</span>
 set keycmd_section    = [<span \@prompt_style>\@[\@keycmd_prompt]\@</span><span \@modcmd_style>\@modcmd</span><span \@keycmd_style>\@keycmd</span><span \@completion_style>\@completion_list</span>]
 set progress_section  = <span foreground="#5F5F62">\@[\@progress.output]\@</span>
 set scroll_section    = <span foreground="#5F5F62">\@[\@scroll_message]\@</span>
 set uri_section       = <span foreground="#5F5F62">\@[\@uri]\@</span>
-set name_section      = <span foreground="#B1CBDE">\@[\@NAME]\@</span>
-set status_section    = <span foreground="#B1CBDE">\@status_message</span>
+set name_section      = <span foreground="#5F5F62">\@[\@NAME]\@</span>
+set status_section    = <span foreground="#5F5F62">\@status_message</span>
 set selected_section  = <span foreground="#606060">\@[\@SELECTED_URI]\@</span>
 
 set download_section  = <span foreground="white">\@downloads</span>
@@ -412,7 +412,7 @@ set insert   = @mode_config insert
 set stack    = @mode_config stack
 
 # Command mode config.
-@command  keycmd_style        = foreground="#0067EB"
+@command  keycmd_style        = foreground="#0771a6"
 @command  status_background   = #202020
 @command  mode_indicator      = Cmd
 @command  keycmd_events       = 1
@@ -427,7 +427,7 @@ set stack    = @mode_config stack
 @insert   modcmd_updates      = 0
 
 # Multi-stage-binding mode config.
-@stack    keycmd_style        = foreground="#0067EB"
+@stack    keycmd_style        = foreground="#0771a6"
 @stack    status_background   = #202020
 @stack    mode_indicator      = Bnd
 @stack    prompt_style        = foreground="#888" weight="light"

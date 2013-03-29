@@ -20,8 +20,8 @@ Xft*hinting:        true
 Xft*hintstyle:      hintfull
 
 !black
-*color0:            #000000
-*color8:            #000000
+*color0:            #333333
+*color8:            #333333
 !!red
 *color1:            #7b3303
 *color9:            #7b3303

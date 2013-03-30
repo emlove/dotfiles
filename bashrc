@@ -16,6 +16,10 @@ fi
 
 # Put your fun stuff here.
 
+if [ "$TERM" == "screen" ] ; then
+    export TERM="screen-256color"
+fi
+
 export PATH="$PATH:$HOME/.local/bin"
 
 alias suspend="sudo /usr/sbin/pm-suspend"

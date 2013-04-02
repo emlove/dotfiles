@@ -1,21 +1,3 @@
-xterm*faceName:     Ubuntu Sans Mono:size=11
-xterm*loginShell:   true
-xterm*transparent:  true
-
-URxvt.font:         xft:Ubuntu Mono:size=13
-URxvt.scrollBar:    false
-URxvt.transparent:  false
-URxvt.shading:      30
-URxvt.tintColor:    #ffffff
-
-Xcursor.theme:      Vanilla-DMZ-AA
-
-Xft*dpi:            96
-Xft*rgba:           rgb
-Xft*antialias:      true
-Xft*hinting:        true
-Xft*hintstyle:      hintfull
-
 !background
 *background:        #1c1c22
 !foreground
@@ -37,8 +19,8 @@ Xft*hintstyle:      hintfull
 *color4:            #0771a6
 *color12:           #0771a6
 !!magenta
-*color5:            #a6a007
-*color13:           #a6a007
+*color5:            #a607a0
+*color13:           #a607a0
 !!cyan
 *color6:            #008d9a
 *color14:           #008d9a

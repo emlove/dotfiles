@@ -1,8 +1,5 @@
 URxvt.font:         xft:Ubuntu Mono:size=13
 URxvt.scrollBar:    false
-URxvt.transparent:  false
-URxvt.shading:      30
-URxvt.tintColor:    #ffffff
 
 Xcursor.theme:      Vanilla-DMZ-AA
 

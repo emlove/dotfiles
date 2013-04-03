@@ -1,3 +1,7 @@
+URxvt.transparent:  true
+URxvt.shading:      20
+URxvt.tintColor:    #ffffff
+
 !background
 *background:        #1c1c22
 !foreground

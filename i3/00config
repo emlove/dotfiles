@@ -155,6 +155,8 @@ for_window [class="URxvt"] border 1pixel
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 exec --no-startup-id feh --no-xinerama --bg-center '/home/adam/dotfiles/color-themes/current-theme/wallpaper.png'
+exec --no-startup-id xautolock -time 10 -locker "i3lock -i '/home/adam/dotfiles/color-themes/current-theme/wallpaper.png'"
+exec --no-startup-id ~/.i3/reload-colors.sh
 
 bindsym $mod+b exec uzbl-browser
 

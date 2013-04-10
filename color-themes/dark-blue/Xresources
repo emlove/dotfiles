@@ -3,10 +3,10 @@ URxvt.shading:      20
 URxvt.tintColor:    #ffffff
 
 !background
-*background:        #1c1c22
+URxvt.background:        #1c1c22
 !foreground
-*foreground:        #d0d0d0
-*cursorColor:       #d0d0d0
+URxvt.foreground:        #d0d0d0
+URxvt.cursorColor:       #d0d0d0
 !black
 *color0:            #444444
 *color8:            #444444

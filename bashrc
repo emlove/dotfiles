@@ -22,15 +22,9 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
-alias suspend="sudo /usr/sbin/pm-suspend"
-alias reboot="sudo /sbin/reboot"
-alias poweroff="sudo /sbin/poweroff"
-
 alias cplayer="mplayer -vo caca -quiet"
 
 alias colors="terminal-colors -x"
-
-alias duf='du -sk * | sort -nr | perl -ne '\''($s,$f)=split(m{\t});for (qw(K M G)) {if($s<1024) {printf("%.1f",$s);print "$_\t$f"; last};$s=$s/1024}'\'
 
 keychain -q ~/.ssh/id_rsa
 . ~/.keychain/$HOSTNAME-sh

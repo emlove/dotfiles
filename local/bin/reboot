@@ -1,0 +1,2 @@
+#!/bin/sh
+dbus-send --print-reply --system --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart > /dev/null

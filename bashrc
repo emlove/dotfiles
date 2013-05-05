@@ -26,6 +26,8 @@ alias cplayer="mplayer -vo caca -quiet"
 
 alias colors="terminal-colors -x"
 
+alias unison="unison -ui text"
+
 keychain -q ~/.ssh/id_rsa
 . ~/.keychain/$HOSTNAME-sh
 . ~/.keychain/$HOSTNAME-sh-gpg

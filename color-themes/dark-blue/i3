@@ -4,3 +4,18 @@ client.focused          #0771a6 #0771a6 #eeeeee #008d9a
 client.focused_inactive #5f676a #5f676a #eeeeee #484e50
 client.unfocused        #222222 #222222 #888888 #292d2e
 client.urgent           #900000 #900000 #ffffff #900000
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    status_command i3status
+    colors {
+        focused_workspace       #0771a6 #0771a6 #eeeeee #2e9ef4
+        inactive_workspace      #222222 #222222 #888888 #292d2e
+
+        background              #1c1c22
+        statusline              #d0d0d0
+    }
+
+    font                    xft:Ubuntu Sans 8
+}

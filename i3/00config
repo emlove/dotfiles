@@ -101,7 +101,7 @@ bindsym $mod+Shift+parenright move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+R exec "~/.i3/reload-colors.sh && i3-msg reload"
+bindsym $mod+Shift+R exec "~/dotfiles/i3/reload-colors.sh && i3-msg reload"
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exit
 
@@ -131,21 +131,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    status_command i3status
-    colors {
-        focused_workspace       #0771a6 #0771a6 #eeeeee #2e9ef4
-        inactive_workspace      #222222 #222222 #888888 #292d2e
-
-        background              #1c1c22
-        statusline              #d0d0d0
-    }
-    
-    font                    xft:Ubuntu Sans 8
-}
-
 focus_follows_mouse no
 
 # Window specific configurations
@@ -157,7 +142,7 @@ exec --no-startup-id udiskie
 exec --no-startup-id feh --no-xinerama --bg-center '/home/adam/dotfiles/color-themes/current-theme/wallpaper.png'
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id xautolock -time 10 -locker "/home/adam/.local/bin/lock-screen"
-exec --no-startup-id ~/.i3/reload-colors.sh
+exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 
 bindsym $mod+b exec uzbl-browser
 

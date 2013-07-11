@@ -1,0 +1,5 @@
+set color_status_fg_bright  = #B1CBDE
+set color_status_fg_normal  = #0771A6
+set color_status_fg_dark    = #5F5F62
+
+set color_status_background = #000000

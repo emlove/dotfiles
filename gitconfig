@@ -11,3 +11,5 @@
 	tool = vimdiff
 [core]
 	autocrlf = input
+[push]
+	default = simple

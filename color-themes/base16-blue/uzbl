@@ -1,5 +1,5 @@
-set color_status_fg_bright  = #5a7fb5
-set color_status_fg_normal  = #273a79
+set color_status_fg_bright  = #273a79
+set color_status_fg_normal  = #5a7fb5
 set color_status_fg_dark    = #5F5F62
 
 set color_status_background = #000000

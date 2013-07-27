@@ -1,6 +1,6 @@
 # Color theme
 # class                 border  backgr. text    indicator
-client.focused          #476a79 #476a79 #eeeeee #008d9a
+client.focused          #273a79 #273a79 #eeeeee #008d9a
 client.focused_inactive #5f676a #5f676a #eeeeee #484e50
 client.unfocused        #222222 #222222 #888888 #292d2e
 client.urgent           #900000 #900000 #ffffff #900000
@@ -10,7 +10,7 @@ client.urgent           #900000 #900000 #ffffff #900000
 bar {
     status_command i3status
     colors {
-        focused_workspace       #476a79 #0771a6 #eeeeee #2e9ef4
+        focused_workspace       #273a79 #273a79 #eeeeee #2e9ef4
         inactive_workspace      #222222 #222222 #888888 #292d2e
 
         background              #1c1c22

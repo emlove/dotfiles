@@ -23,8 +23,8 @@ URxvt.tintColor:    #ffffff
 #define base0B_dark #60713b
 #define base0C #75b5aa
 #define base0C_dark #4e7971
-#define base0D #6a9fb5
-#define base0D_dark #476a79
+#define base0D #5a7fb5
+#define base0D_dark #273a79
 #define base0E #aa759f
 #define base0E_dark #714e6a
 #define base0F #8f5536

@@ -318,9 +318,9 @@ set ebind     = @mode_bind global,-insert
 @cbind  zS  = event REQ_NEW_WINDOW \@(echo "$UZBL_URI" | sed -e 's/^http:/https:/')\@
 
 # Yanking & pasting binds
-@cbind  yu  = sh 'echo -n "$UZBL_URI" | xclip'
-@cbind  yU  = sh 'echo -n "$1" | xclip' \@SELECTED_URI
-@cbind  yy  = sh 'echo -n "$UZBL_TITLE" | xclip'
+@cbind  yu  = sh 'echo -n "$UZBL_URI" | xclip -selection clipboard'
+@cbind  yU  = sh 'echo -n "$1" | xclip -selection clipboard' \@SELECTED_URI
+@cbind  yy  = sh 'echo -n "$UZBL_TITLE" | xclip -selection clipboard'
 
 # Copy current selection and strip it of whitespace
 @cbind  C   = sh 'xclip -o -selection primary | tr -s " " | xclip -i -selection clipboard'

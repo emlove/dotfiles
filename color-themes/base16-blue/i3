@@ -1,8 +1,8 @@
 # Color theme
 # class                 border  backgr. text    indicator
-client.focused          #273a79 #273a79 #eeeeee #008d9a
-client.focused_inactive #5f676a #5f676a #eeeeee #484e50
-client.unfocused        #222222 #222222 #888888 #292d2e
+client.focused          #273a79 #273a79 #eeeeee #4e7971
+client.focused_inactive #5f676a #5f676a #eeeeee #5f676a
+client.unfocused        #5f676a #5f676a #eeeeee #5f676a
 client.urgent           #900000 #900000 #ffffff #900000
 
 # Start i3bar to display a workspace bar (plus the system information i3status

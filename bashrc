@@ -28,6 +28,8 @@ alias colors="terminal-colors -x"
 
 alias unison="unison -ui text"
 
+alias xclip="xclip -selection clipboard"
+
 keychain -q ~/.ssh/id_rsa
 . ~/.keychain/$HOSTNAME-sh
 . ~/.keychain/$HOSTNAME-sh-gpg

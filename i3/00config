@@ -140,6 +140,7 @@ focus_follows_mouse no
 for_window [class="URxvt"] border 1pixel
 
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id xautolock -time 10 -locker "/home/adam/.local/bin/lock-screen"
@@ -147,8 +148,8 @@ exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 
 bindsym $mod+b exec uzbl-browser
 
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%; pactl set-sink-mute 0 0"
-bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -5%; pactl set-sink-mute 0 0"
-bindsym XF86AudioMute exec ~/.local/bin/toggle-mute
+bindsym XF86AudioRaiseVolume exec "~/.local/bin/set-volume --up"
+bindsym XF86AudioLowerVolume exec "~/.local/bin/set-volume --down"
+bindsym XF86AudioMute exec "~/.local/bin/set-volume --togmute"
 
 bindsym $mod+Shift+Q exec sh -c "/home/adam/.local/bin/lock-screen"

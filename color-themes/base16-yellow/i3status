@@ -1,8 +1,8 @@
 general {
     colors = true
     interval = 1
-	color_good="#90a959"
-	color_degraded="#f4bf75"
-	color_bad="#ac4142"
+	color_good="#60713b"
+	color_degraded="#a37f4e"
+	color_bad="#732b2c"
 }
 

@@ -22,6 +22,8 @@ fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
+set -o vi
+
 alias cplayer="mplayer -vo caca -quiet"
 
 alias colors="terminal-colors -x"

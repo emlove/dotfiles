@@ -1,0 +1,2 @@
+#!/bin/sh
+mplayer -really-quiet /usr/share/sounds/error.wav &

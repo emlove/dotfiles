@@ -21,6 +21,7 @@ if [ "$TERM" == "screen" ] ; then
 fi
 
 export PATH="$PATH:$HOME/.local/bin"
+export VDPAU_DRIVER=va_gl
 
 set -o vi
 

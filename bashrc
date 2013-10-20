@@ -25,7 +25,7 @@ export VDPAU_DRIVER=va_gl
 
 set -o vi
 
-alias cplayer="mplayer -vo caca -quiet"
+alias cplayer="CACA_DRIVER=ncurses mplayer -vo caca -quiet"
 
 alias colors="terminal-colors -x"
 

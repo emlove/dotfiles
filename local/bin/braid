@@ -1,0 +1,2 @@
+#!/bin/sh
+/opt/braid/braid -windowed -width 1916 -height 1041

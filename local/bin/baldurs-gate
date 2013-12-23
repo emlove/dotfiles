@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/games/bin/gemrb -c ~/.gemrb/$(basename $0).cfg

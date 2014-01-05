@@ -1,6 +1,6 @@
 general {
     colors = true
-    interval = 1
+    interval = 5
 	color_good="#90a959"
 	color_degraded="#f4bf75"
 	color_bad="#ac4142"

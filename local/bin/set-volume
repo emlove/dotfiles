@@ -83,3 +83,6 @@ case "$1" in
                 volMute unmute
         ;;
 esac
+
+# Update i3 status bar
+killall -USR1 i3status

@@ -1,6 +1,30 @@
 #!/bin/bash
+
+# Generate grep search expression. If no arguments are passed, search for
+# anything other than gentoo repo. Otherwise search for the repos passed.
+if [[ -n "$@" ]]; then
+    GREP_EXPRESSION=""
+    for i in $@; do
+        GREP_EXPRESSION="${GREP_EXPRESSION} -e $i"
+    done
+else
+    GREP_EXPRESSION="-v gentoo"
+fi
+
+# Perform the search. Output package names
+OUTPUT=""
 for i in /var/db/pkg/*/*; do
-    if ! grep gentoo $i/repository >/dev/null; then
-        echo -e "`basename $i`\t`cat $i/repository`"
+    if grep ${GREP_EXPRESSION} $i/repository > /dev/null; then
+        CATEGORY="$(basename $(dirname $i))"
+        PACKAGE="$(basename $i)"
+        OUTPUT="${OUTPUT}${CATEGORY}/${PACKAGE} $(cat $i/repository)\n"
     fi
 done
+
+# If output is to a terminal, display in columns.
+# Otherwise just send the output directly
+if [ -t 1 ] ; then
+    echo -e "${OUTPUT}" | column -t
+else
+    echo -e "${OUTPUT}"
+fi

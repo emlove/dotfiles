@@ -1,0 +1,4 @@
+#!/bin/bash
+BUFFER="$(xclip -selection clipboard -o)"
+tmux show-buffer | xclip -selection clipboard -i
+tmux set-buffer "${BUFFER}"

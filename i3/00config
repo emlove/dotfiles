@@ -171,3 +171,5 @@ bindsym XF86AudioLowerVolume exec "~/.local/bin/set-volume --down"
 bindsym XF86AudioMute exec "~/.local/bin/set-volume --togmute"
 
 bindsym $mod+Shift+Q exec sh -c "/home/adam/.local/bin/lock-screen"
+
+bindsym $mod+t exec "~/.local/bin/xclip-tmux-swap"

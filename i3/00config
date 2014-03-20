@@ -154,6 +154,8 @@ focus_follows_mouse no
 
 for_window [class="URxvt"] border 1pixel
 
+for_window [class="Geary"] border 1pixel
+
 for_window [title="^Kerbal Space Program$"] border 1pixel
 
 exec --no-startup-id nm-applet

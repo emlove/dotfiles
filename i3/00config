@@ -159,14 +159,13 @@ for_window [title="^Geary$"] border 1pixel
 for_window [title="^Kerbal Space Program$"] border 1pixel
 
 exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
 exec --no-startup-id gnome-screensaver
 exec --no-startup-id xautolock -time 10 -locker "/home/adam/.local/bin/lock-screen"
 exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
 
-bindsym $mod+b exec uzbl-browser
+bindsym $mod+b exec firefox
 
 bindsym XF86AudioRaiseVolume exec "~/.local/bin/set-volume --up"
 bindsym XF86AudioLowerVolume exec "~/.local/bin/set-volume --down"

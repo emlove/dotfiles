@@ -20,7 +20,7 @@ if [ "$TERM" == "screen" ] ; then
     export TERM="screen-256color"
 fi
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
 export VDPAU_DRIVER=va_gl
 
 set -o vi

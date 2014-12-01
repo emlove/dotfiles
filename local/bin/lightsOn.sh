@@ -36,6 +36,7 @@ vlc_detection=0
 firefox_flash_detection=1
 chromium_flash_detection=0
 minitube_detection=0
+dolphin_detection=1
 
 # Names of programs which, when running, you wish to delay the screensaver.
 delay_progs=() # For example ('ardour2' 'gmpc')
@@ -125,7 +126,6 @@ isAppRunning()
     activ_win_title=`xprop -id $activ_win_id | grep "WM_CLASS(STRING)"`   # I used WM_NAME(STRING) before, WM_CLASS more accurate.
 
 
-
     # Check if user want to detect Video fullscreen on Firefox, modify variable firefox_flash_detection if you dont want Firefox detection
     if [ $firefox_flash_detection == 1 ];then
         if [[ "$activ_win_title" = *unknown* || "$activ_win_title" = *plugin-container* ]];then
@@ -184,6 +184,17 @@ isAppRunning()
             #minitube_process=`pgrep -l minitube | grep -wc minitube`
             minitube_process=`pgrep -lc minitube`
             if [ $minitube_process -ge 1 ]; then
+                return 1
+            fi
+        fi
+    fi
+
+    # Check if user want to detect dolphin fullscreen, modify variable dolphin_detection
+    if [ $dolphin_detection == 1 ];then
+        if [[ "$activ_win_title" = *dolphin-emu* ]];then
+            #check if dolphin is running.
+            dolphin_process=`pgrep -lc dolphin-emu`
+            if [ $dolphin_process -ge 1 ]; then
                 return 1
             fi
         fi

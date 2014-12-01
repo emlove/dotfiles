@@ -18,13 +18,13 @@ function volUp {
 
         preVol=`pacmd list-sinks |grep -A 15 'index: '${active_sink}'' |awk '/volume: 0:/{ print $3}'|sed s/.$//`
 
-        if [ ${preVol} -le ${maxvol} -a ${preVol} -ge ${maxlimit} ]
-        then
-                pactl set-sink-volume ${active_sink} -- ${maxvol}%
-        elif [ ${preVol} -lt ${maxlimit} ]
-        then
+        #if [ ${preVol} -le ${maxvol} -a ${preVol} -ge ${maxlimit} ]
+        #then
+        #        pactl set-sink-volume ${active_sink} -- ${maxvol}%
+        #ielif [ ${preVol} -lt ${maxlimit} ]
+        #then
                 pactl set-sink-volume ${active_sink} -- +${inc}%
-        fi
+        #fi
 
         curVol=`pacmd list-sinks |grep -A 15 'index: '${active_sink}'' |awk '/volume: 0:/{ print $3}'|sed s/.$//`
 }

@@ -3,84 +3,34 @@
 # finds the active sink for pulse audio and increments the volume. useful when you have multiple audio outputs and have a key bound to vol-up and down
 
 inc=5
-maxvol='200'
 
 active_sink=$(pacmd list-sinks |awk '/* index:/{print $3}')
-if [ -z $active_sink ]
-then
-    active_sink=$(pacmd list-sinks | awk '/index/{print $2}')
-fi
 
-limit=$(expr 100 - ${inc})
-maxlimit=$(expr ${maxvol} - ${inc})
-
-function volUp {
-
-        preVol=`pacmd list-sinks |grep -A 15 'index: '${active_sink}'' |awk '/volume: 0:/{ print $3}'|sed s/.$//`
-
-        #if [ ${preVol} -le ${maxvol} -a ${preVol} -ge ${maxlimit} ]
-        #then
-        #        pactl set-sink-volume ${active_sink} -- ${maxvol}%
-        #ielif [ ${preVol} -lt ${maxlimit} ]
-        #then
-                pactl set-sink-volume ${active_sink} -- +${inc}%
-        #fi
-
-        curVol=`pacmd list-sinks |grep -A 15 'index: '${active_sink}'' |awk '/volume: 0:/{ print $3}'|sed s/.$//`
-}
-
-function volDown {
-
-        pactl set-sink-volume ${active_sink} -- -${inc}%
-        curVol=`pacmd list-sinks |grep -A 15 'index: '${active_sink}'' |awk '/volume: 0:/{ print $3}'|sed s/.$//`
-}
-
-function volMute {
-
-        case "$1" in
-                mute)
-                        pactl set-sink-mute ${active_sink} 1
-                        curVol=0
-                        status=1
-                ;;
-                unmute)
-                        pactl set-sink-mute ${active_sink} 0
-                        curVol=`pacmd list-sinks |grep -A 15 'index: '${active_sink}'' |awk '/volume: 0:/{ print $3}'|sed s/.$//`
-                        status=0
-                ;;
-        esac
-}
-
-function volMuteStatus {
-
-        curStatus=`pacmd list-sinks |grep -A 15 'index: '${active_sink}'' |awk '/muted/{ print $2}'`
-
-        if [ ${curStatus} = 'yes' ]
-        then
-                volMute unmute
-        else
-                volMute mute
-        fi
-
-}
+# Pending for deletion. Should have commented this better.
+# 2015-03-20
+#
+# if [ -z $active_sink ]
+# then
+#     active_sink=$(pacmd list-sinks | awk '/index/{print $2}')
+# fi
 
 case "$1" in
         --up)
-                volUp
-                volMute unmute
+                pactl set-sink-volume ${active_sink} +${inc}%
+                pactl set-sink-mute ${active_sink} 0
         ;;
         --down)
-                volDown
-                volMute unmute
+                pactl set-sink-volume ${active_sink} -${inc}%
+                pactl set-sink-mute ${active_sink} 0
         ;;
         --togmute)
-                volMuteStatus
+                pactl set-sink-mute ${active_sink} toggle
         ;;
         --mute)
-                volMute mute
+                pactl set-sink-mute ${active_sink} 1
         ;;
         --unmute)
-                volMute unmute
+                pactl set-sink-mute ${active_sink} 0
         ;;
 esac
 

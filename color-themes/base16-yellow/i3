@@ -13,7 +13,7 @@ bar {
         focused_workspace       #f4bf75 #f4bf75 #222222 #2e9ef4
         inactive_workspace      #aaaaaa #aaaaaa #111111 #292d2e
 
-        background              #aaaaaa
+        background              #cccccc
         statusline              #111111
     }
 

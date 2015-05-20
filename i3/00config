@@ -21,7 +21,8 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvt -e tmux
 
 # kill focused window
-bindsym $mod+q kill
+# bindsym $mod+q kill
+bindsym $mod+q exec ~/.local/bin/kill-active-window
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec ~/.config/i3/dmenu_run.sh
@@ -158,6 +159,7 @@ for_window [title="^Geary$"] border 1pixel
 
 for_window [title="^Kerbal Space Program$"] border 1pixel
 
+exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
 exec --no-startup-id gnome-screensaver

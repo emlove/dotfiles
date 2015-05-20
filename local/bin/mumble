@@ -1,0 +1,4 @@
+#!/bin/env bash
+xmodmap -e "keysym Caps_Lock = F13"
+/usr/bin/mumble
+xmodmap -e "keysym F13 = Caps_Lock"

@@ -37,6 +37,7 @@ firefox_flash_detection=1
 chromium_flash_detection=0
 minitube_detection=0
 dolphin_detection=1
+totem_detection=1
 
 # Names of programs which, when running, you wish to delay the screensaver.
 delay_progs=() # For example ('ardour2' 'gmpc')
@@ -195,6 +196,18 @@ isAppRunning()
             #check if dolphin is running.
             dolphin_process=`pgrep -lc dolphin-emu`
             if [ $dolphin_process -ge 1 ]; then
+                return 1
+            fi
+        fi
+    fi
+
+    # Check if user want to detect totem fullscreen, modify variable totem_detection
+    if [ $totem_detection == 1 ];then
+        echo $activ_win_title
+        if [[ "$activ_win_title" = *totem* ]];then
+            #check if totem is running.
+            totem_process=`pgrep -lc totem`
+            if [ $totem_process -ge 1 ]; then
                 return 1
             fi
         fi

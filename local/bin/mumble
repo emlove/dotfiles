@@ -1,4 +1,6 @@
 #!/bin/env bash
-xmodmap -e "keysym Caps_Lock = F13"
+xmodmap -e "keycode 66 = XF86Phone"
+xmodmap -e "clear Lock"
 /usr/bin/mumble
-xmodmap -e "keysym F13 = Caps_Lock"
+xmodmap -e "keycode 66 = Caps_Lock"
+xmodmap -e "add Lock = Caps_Lock"

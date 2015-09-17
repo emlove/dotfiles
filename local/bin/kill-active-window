@@ -1,4 +1,5 @@
 #!/bin/env bash
 ACTIVE_WINDOW_ID=$(xprop -root | awk '/NET_ACTIVE_WINDOW/ { print $5; exit}')
 ACTIVE_WINDOW_CLASS=$(xprop -id $ACTIVE_WINDOW_ID | awk -F\" '/WM_CLASS/ {print $2; exit}')
-[[ $ACTIVE_WINDOW_CLASS != "dota_linux" ]] && i3-msg kill
+echo $ACTIVE_WINDOW_CLASS > /home/adam/window-class
+[[ $ACTIVE_WINDOW_CLASS != "dota2" ]] && i3-msg kill

@@ -86,6 +86,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+minus workspace keepass
 
 # move focused container to workspace
 bindsym $mod+Shift+exclam move container to workspace 1
@@ -98,6 +99,7 @@ bindsym $mod+Shift+ampersand move container to workspace 7
 bindsym $mod+Shift+asterisk move container to workspace 8
 bindsym $mod+Shift+parenleft move container to workspace 9
 bindsym $mod+Shift+parenright move container to workspace 10
+bindsym $mod+Shift+underscore move container to workspace keepass
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -163,6 +165,8 @@ exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
 exec --no-startup-id gnome-screensaver
+exec --no-startup-id /usr/bin/owncloud
+exec --no-startup-id /usr/bin/keepass
 exec --no-startup-id xautolock -time 10 -locker "/home/adam/.local/bin/lock-screen"
 exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
@@ -176,3 +180,7 @@ bindsym XF86AudioMute exec "~/.local/bin/set-volume --togmute"
 bindsym $mod+Shift+Q exec sh -c "/home/adam/.local/bin/lock-screen"
 
 bindsym $mod+t exec "~/.local/bin/xclip-tmux-swap"
+
+bindsym Ctrl+Mod1+a exec "mono /usr/lib64/keepass/KeePass.exe --auto-type"
+
+assign [class="^KeePass2$" title="^KeePass\.kdbx - KeePass$"] keepass

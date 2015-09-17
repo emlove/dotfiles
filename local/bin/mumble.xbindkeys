@@ -1,0 +1,11 @@
+"xset led named "Caps Lock"
+  XF86Phone
+
+"xset led named "Caps Lock"
+  Mod2 + XF86Phone
+
+"xset -led named "Caps Lock"
+  release + XF86Phone
+
+"xset -led named "Caps Lock"
+  Mod2 + release + XF86Phone

@@ -1,0 +1,4 @@
+#!/bin/env bash
+for i in $(pactl list sink-inputs | grep "^Sink Input #" | cut -d "#" -f 2); do
+    pactl set-sink-input-volume $i 100%
+done

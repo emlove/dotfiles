@@ -161,6 +161,10 @@ for_window [title="^Geary$"] border 1pixel
 
 for_window [title="^Kerbal Space Program$"] border 1pixel
 
+for_window [class="dota2"] fullscreen
+
+exec --no-startup-id /usr/bin/compton -CGb
+
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray

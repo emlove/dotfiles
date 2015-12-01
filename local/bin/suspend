@@ -1,2 +1,3 @@
 #!/bin/sh
+~/.local/bin/lock-screen &
 /usr/bin/systemctl suspend

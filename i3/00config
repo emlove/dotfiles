@@ -168,10 +168,9 @@ exec --no-startup-id /usr/bin/compton -CGb
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
-exec --no-startup-id gnome-screensaver
 exec --no-startup-id /usr/bin/owncloud
 exec --no-startup-id /usr/bin/keepass
-exec --no-startup-id xautolock -time 10 -locker "/home/adam/.local/bin/lock-screen"
+exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"
 exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
 
@@ -181,7 +180,10 @@ bindsym XF86AudioRaiseVolume exec "~/.local/bin/set-volume --up"
 bindsym XF86AudioLowerVolume exec "~/.local/bin/set-volume --down"
 bindsym XF86AudioMute exec "~/.local/bin/set-volume --togmute"
 
-bindsym $mod+Shift+Q exec sh -c "/home/adam/.local/bin/lock-screen"
+bindsym XF86PowerOff exec sh -c "~/.local/bin/suspend"
+bindsym XF86Suspend  exec sh -c "~/.local/bin/suspend"
+
+bindsym $mod+Shift+Q exec sh -c "~/.local/bin/lock-screen"
 
 bindsym $mod+t exec "~/.local/bin/xclip-tmux-swap"
 

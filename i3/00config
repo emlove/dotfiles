@@ -168,6 +168,7 @@ exec --no-startup-id /usr/bin/compton -CGb
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
+exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id /usr/bin/owncloud
 exec --no-startup-id /usr/bin/keepass
 exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"

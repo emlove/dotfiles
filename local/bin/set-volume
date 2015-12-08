@@ -4,15 +4,8 @@
 
 inc=5
 
-active_sink=$(pacmd list-sinks |awk '/* index:/{print $3}')
-
-# Pending for deletion. Should have commented this better.
-# 2015-03-20
-#
-# if [ -z $active_sink ]
-# then
-#     active_sink=$(pacmd list-sinks | awk '/index/{print $2}')
-# fi
+# magic keyword here is only described in pacctl --help
+active_sink="@DEFAULT_SINK@"
 
 case "$1" in
         --up)

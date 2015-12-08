@@ -33,7 +33,3 @@ alias unison="unison -ui text"
 alias xclip="xclip -selection clipboard"
 
 alias diff="colordiff"
-
-keychain -q ~/.ssh/id_rsa
-. ~/.keychain/$HOSTNAME-sh
-. ~/.keychain/$HOSTNAME-sh-gpg

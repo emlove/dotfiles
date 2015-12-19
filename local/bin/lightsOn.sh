@@ -31,10 +31,10 @@
 # Modify these variables if you want this script to detect if Mplayer,
 # VLC, Minitube, or Firefox or Chromium Flash Video are Fullscreen and disable
 # xscreensaver/kscreensaver and PowerManagement.
-mplayer_detection=0
-vlc_detection=0
+mplayer_detection=1
+vlc_detection=1
 firefox_flash_detection=1
-chromium_flash_detection=0
+chromium_flash_detection=1
 minitube_detection=0
 dolphin_detection=1
 totem_detection=1
@@ -90,7 +90,7 @@ checkFullscreen()
     for display in $displays
     do
         #get id of active window and clean output
-        activ_win_id=`DISPLAY=:0.${display} xprop -root _NET_ACTIVE_WINDOW`
+        activ_win_id=$(xprop -root _NET_ACTIVE_WINDOW)
         #activ_win_id=${activ_win_id#*# } #gives error if xprop returns extra ", 0x0" (happens on some distros)
         activ_win_id=${activ_win_id:40:9}
 
@@ -102,7 +102,7 @@ checkFullscreen()
         #fi
 
         # Check if Active Window (the foremost window) is in fullscreen state
-        isActivWinFullscreen=`DISPLAY=:0.${display} xprop -id $activ_win_id | grep _NET_WM_STATE_FULLSCREEN`
+        isActivWinFullscreen=$(xprop -id $activ_win_id | grep _NET_WM_STATE_FULLSCREEN)
             if [[ "$isActivWinFullscreen" = *NET_WM_STATE_FULLSCREEN* ]];then
                 isAppRunning
                 var=$?
@@ -126,7 +126,6 @@ isAppRunning()
     #Get title of active window
     activ_win_title=`xprop -id $activ_win_id | grep "WM_CLASS(STRING)"`   # I used WM_NAME(STRING) before, WM_CLASS more accurate.
 
-
     # Check if user want to detect Video fullscreen on Firefox, modify variable firefox_flash_detection if you dont want Firefox detection
     if [ $firefox_flash_detection == 1 ];then
         if [[ "$activ_win_title" = *unknown* || "$activ_win_title" = *plugin-container* ]];then
@@ -149,6 +148,9 @@ isAppRunning()
             if [[ $flash_process -ge 1 ]];then
                 return 1
             fi
+        fi
+        if [[ "$activ_win_title" = *google-chrome* ]];then
+            return 1
         fi
     fi
 

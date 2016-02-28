@@ -8,6 +8,10 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" Highlight spaces at start of line or trailing whitespace
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /^ \+\|\s\+$/
+
 " Auto indent and smart indent
 set ai
 set si

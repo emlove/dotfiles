@@ -170,7 +170,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
 exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id /usr/bin/owncloud
-exec --no-startup-id /usr/bin/keepass
 exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"
 exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570

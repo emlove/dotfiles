@@ -1,1 +1,2 @@
+#!/bin/env bash
 primusrun /usr/games/bin/steam

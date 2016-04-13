@@ -6,3 +6,8 @@ plugins: chroma duplicates fetchart
 import:
     incremental: yes
     move: yes
+
+paths:
+    default: $albumartist/$album%aunique{}/$track $title
+    singleton: $albumartist/$album%aunique{}/$track $title
+    comp: $albumartist/$album%aunique{}/$track $title

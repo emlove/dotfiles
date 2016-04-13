@@ -1,0 +1,8 @@
+directory: ~/beets
+library: ~/.local/share/beets/beets.blb
+
+plugins: chroma duplicates fetchart
+
+import:
+    incremental: yes
+    move: yes

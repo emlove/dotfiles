@@ -13,3 +13,9 @@
 	autocrlf = input
 [push]
 	default = simple
+[sendemail]
+    smtpEncryption = tls
+    smtpServer = smtp.gmail.com
+    smtpUser = adam@armills.info
+    smtpPass = husmwyfbnfvcygah
+    smtpServerPort = 587

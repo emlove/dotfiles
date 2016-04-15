@@ -1,7 +1,7 @@
 directory: ~/beets
 library: ~/.local/share/beets/beets.blb
 
-plugins: chroma duplicates fetchart
+plugins: chroma duplicates fetchart embedart
 
 import:
     incremental: yes

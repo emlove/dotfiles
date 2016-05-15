@@ -1,6 +1,7 @@
 general {
     colors = true
-    interval = 5
+    interval = 1
+    separator = ""
 	color_good="#90a959"
 	color_degraded="#f4bf75"
 	color_bad="#ac4142"

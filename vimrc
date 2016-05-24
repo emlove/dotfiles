@@ -15,3 +15,9 @@ set si
 " Use smart case for text searches
 set ignorecase
 set smartcase
+
+" Show relative line numbers
+set number
+set relativenumber
+highlight LineNr ctermfg=236
+highlight CursorLineNr ctermfg=236

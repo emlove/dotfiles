@@ -1,0 +1,2 @@
+#!/bin/env bash
+curl --data-binary '{ "jsonrpc": "2.0", "method": "VideoLibrary.Scan", "id": "mybash"}' -H 'content-type: application/json;' http://kodi:kodi@192.168.1.2:8089/jsonrpc

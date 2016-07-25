@@ -33,3 +33,5 @@ alias unison="unison -ui text"
 alias xclip="xclip -selection clipboard"
 
 alias diff="colordiff"
+
+eval "$(/usr/bin/beet completion)"

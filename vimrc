@@ -21,3 +21,5 @@ set number
 set relativenumber
 highlight LineNr ctermfg=236
 highlight CursorLineNr ctermfg=236
+
+set background=dark

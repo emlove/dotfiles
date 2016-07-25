@@ -11,3 +11,6 @@ paths:
     default: $albumartist/$album%aunique{}/$track $title
     singleton: $albumartist/$album%aunique{}/$track $title
     comp: $albumartist/$album%aunique{}/$track $title
+
+fetchart:
+    sources: itunes amazon albumart google wikipedia fanarttv

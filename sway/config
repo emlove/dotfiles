@@ -18,7 +18,7 @@ font xft:Ubuntu Sans 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt -e tmux
+bindsym $mod+Return exec terminology -e tmux
 
 # kill focused window
 # bindsym $mod+q kill
@@ -99,7 +99,7 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-bindsym $mod+Shift+minus container to workspace keepass
+bindsym $mod+Shift+minus move container to workspace keepass
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -154,6 +154,7 @@ focus_follows_mouse no
 # Window specific configurations
 
 for_window [class="urxvt"] border pixel 1
+for_window [class="main"] border pixel 1
 
 for_window [title="^Geary$"] border pixel 1
 
@@ -177,16 +178,16 @@ input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 
 bindsym $mod+b exec firefox
 
-bindsym XF86AudioRaiseVolume exec "~/.local/bin/set-volume --up"
-bindsym XF86AudioLowerVolume exec "~/.local/bin/set-volume --down"
-bindsym XF86AudioMute exec "~/.local/bin/set-volume --togmute"
+bindsym XF86AudioRaiseVolume exec ~/.local/bin/set-volume --up
+bindsym XF86AudioLowerVolume exec ~/.local/bin/set-volume --down
+bindsym XF86AudioMute exec ~/.local/bin/set-volume --togmute
 
-bindsym XF86PowerOff exec sh -c "~/.local/bin/suspend"
-bindsym XF86Suspend  exec sh -c "~/.local/bin/suspend"
+bindsym XF86PowerOff exec ~/.local/bin/suspend
+bindsym XF86Suspend  exec ~/.local/bin/suspend
 
-bindsym $mod+Shift+Q exec sh -c "~/.local/bin/lock-screen"
+bindsym $mod+Shift+Q exec ~/.local/bin/lock-screen
 
-bindsym $mod+t exec "~/.local/bin/xclip-tmux-swap"
+bindsym $mod+t exec ~/.local/bin/xclip-tmux-swap
 
 bindsym Ctrl+Mod1+a exec "mono /usr/lib64/keepass/KeePass.exe --auto-type"
 

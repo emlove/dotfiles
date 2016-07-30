@@ -2,3 +2,4 @@
 # https://github.com/ValveSoftware/Dota-2/issues/756
 __GLVND_DISALLOW_PATCHING=1 optirun -b primus /usr/games/bin/steam
 #primusrun /usr/games/bin/steam
+#optirun -b primus /usr/games/bin/steam

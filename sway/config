@@ -154,13 +154,11 @@ focus_follows_mouse no
 # Window specific configurations
 
 for_window [class="urxvt"] border pixel 1
-for_window [class="main"] border pixel 1
-
+for_window [class="main"] border pixel 1 # terminology
 for_window [title="^Geary$"] border pixel 1
-
 for_window [title="^Kerbal Space Program$"] border pixel 1
-
 for_window [class="dota2"] fullscreen
+for_window [class="Civ5XP"] fullscreen
 
 output "*" background ~/dotfiles/color-themes/current-theme/wallpaper.png center
 

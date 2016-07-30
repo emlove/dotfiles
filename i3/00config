@@ -156,12 +156,10 @@ focus_follows_mouse no
 # Window specific configurations
 
 for_window [class="URxvt"] border 1pixel
-
 for_window [title="^Geary$"] border 1pixel
-
 for_window [title="^Kerbal Space Program$"] border 1pixel
-
 for_window [class="dota2"] fullscreen
+for_window [class="Civ5XP"] fullscreen
 
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet

@@ -1,2 +1,2 @@
 #!/bin/sh
-primusrun /usr/games/bin/dolphin-emu
+primusrun /usr/bin/dolphin-emu

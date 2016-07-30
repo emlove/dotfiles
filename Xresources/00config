@@ -1,4 +1,4 @@
-URxvt.font:         xft:Ubuntu Mono:size=13
+URxvt.font:         xft:Ubuntu Mono:size=13,xft:DejaVu Sans Mono:size=13,xft:Symbola:size=13
 URxvt.scrollBar:    false
 
 Xcursor.theme:      Vanilla-DMZ-AA

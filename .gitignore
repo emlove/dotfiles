@@ -3,3 +3,4 @@ ncmpcpp/error.log
 uzbl/config
 i3status/config
 vim/.netrwhist
+*.swp

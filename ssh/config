@@ -1,3 +1,7 @@
 Host=adam-desktop
 Hostname=adam-desktop.armills.info
 User=adam
+
+Host=adam-nas
+Hostname=adam-nas.armills.info
+User=adam

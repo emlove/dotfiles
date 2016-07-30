@@ -34,4 +34,6 @@ alias xclip="xclip -selection clipboard"
 
 alias diff="colordiff"
 
-eval "$(/usr/bin/beet completion)"
+if command -v beet >/dev/null 2>&1 ; then
+    eval "$(/usr/bin/beet completion)"
+fi

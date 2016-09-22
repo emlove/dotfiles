@@ -4,3 +4,6 @@ uzbl/config
 i3status/config
 vim/.netrwhist
 *.swp
+local/bin/cookiecutter
+local/bin/pasteurize
+local/bin/futurize

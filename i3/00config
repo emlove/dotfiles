@@ -157,7 +157,7 @@ focus_follows_mouse no
 
 for_window [class="URxvt"] border 1pixel
 for_window [title="^Geary$"] border 1pixel
-for_window [title="^Kerbal Space Program$"] border 1pixel
+for_window [title="^Kerbal Space Program$"] fullscreen
 for_window [class="dota2"] fullscreen
 for_window [class="Civ5XP"] fullscreen
 

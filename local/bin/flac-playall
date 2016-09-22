@@ -1,0 +1,14 @@
+#!/bin/env xonsh
+
+import time
+
+$RAISE_SUBPROC_ERROR = True
+played = []
+
+while True:
+    for file in !(find . -name '*.flac' | sort):
+        if not file in played:
+            mplayer @(file)
+            played.append(file)
+    print("Waiting for more files...")
+    time.sleep(10)

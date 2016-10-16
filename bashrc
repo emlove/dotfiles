@@ -35,3 +35,5 @@ alias xclip="xclip -selection clipboard"
 alias diff="colordiff"
 
 eval "$(/usr/bin/beet completion)"
+
+source /usr/bin/virtualenvwrapper.sh

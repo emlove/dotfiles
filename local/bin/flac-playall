@@ -6,7 +6,7 @@ $RAISE_SUBPROC_ERROR = True
 played = []
 
 while True:
-    for file in !(find . -name '*.flac' | sort):
+    for file in !(find . -name '*.flac' | sort | shuf):
         if not file in played:
             mplayer @(file)
             played.append(file)

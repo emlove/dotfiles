@@ -1,0 +1,9 @@
+#!/bin/env bash
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Exit if piped command has error code
+set -eu -o pipefail
+
+sed -i -e '/<[A-Z.]*>/ {/^<\(OFX\|SIGNONMSGSRSV1\|STATUS\|FI\|SONRS\|CCSTMTTRNRS\|CCSTMTRS\|CCACCTFROM\|BANKTRANLIST\|STMTTRN\)>/! s/<\([A-Z.]*\)>\(.*\)/<\1>\2<\/\1>/}' "$@"

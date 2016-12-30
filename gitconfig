@@ -1,6 +1,7 @@
 [user]
 	name = Adam Mills
 	email = adam@armills.info
+	signingkey = A033D5A98F9A20FB990831D2BF90A5D750629906
 [color]
 	diff = auto
 	status = auto

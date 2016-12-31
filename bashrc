@@ -38,4 +38,6 @@ if command -v beet >/dev/null 2>&1 ; then
     eval "$(/usr/bin/beet completion)"
 fi
 
+alias ls="ls -N --color=auto"
+
 source /usr/bin/virtualenvwrapper.sh

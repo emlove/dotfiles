@@ -34,6 +34,7 @@
 mplayer_detection=1
 vlc_detection=1
 firefox_flash_detection=1
+firefox_detection=1
 chromium_flash_detection=1
 minitube_detection=0
 dolphin_detection=1
@@ -136,6 +137,13 @@ isAppRunning()
             if [[ $flash_process -ge 1 ]];then
                 return 1
             fi
+        fi
+    fi
+
+
+    if [ $firefox_detection == 1 ];then
+        if [[ "$activ_win_title" = *Firefox* ]];then
+            return 1
         fi
     fi
 

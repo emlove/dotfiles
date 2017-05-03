@@ -1,2 +1,3 @@
 #!/bin/env bash
-optirun -b primus /usr/bin/playonlinux
+#optirun -b primus /usr/bin/playonlinux
+/usr/bin/playonlinux

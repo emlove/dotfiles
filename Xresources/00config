@@ -1,4 +1,4 @@
-URxvt.font:         xft:Ubuntu Mono:size=13,xft:DejaVu Sans Mono:size=13,xft:Symbola:size=13
+URxvt.font:         xft:Ubuntu Mono:size=13,xft:DejaVu Sans Mono:size=13,xft:Symbola:size=13,xft:Inconsolata for Powerline
 URxvt.scrollBar:    false
 
 Xcursor.theme:      Vanilla-DMZ-AA
@@ -6,5 +6,5 @@ Xcursor.theme:      Vanilla-DMZ-AA
 Xft.dpi:            96
 Xft.rgba:           rgb
 Xft.antialias:      true
-Xft.hinting:        true
+Xft.hinting:        false
 Xft.hintstyle:      hintfull

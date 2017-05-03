@@ -1,4 +1,4 @@
 #!/bin/bash
 GAMMA_ALL=${1-0}
 GAMMA=${GAMMA_ALL}:${GAMMA_ALL}:${GAMMA_ALL}
-/usr/bin/xrandr --output LVDS1 --gamma ${GAMMA}
+/usr/bin/xrandr --output LVDS-1 --gamma ${GAMMA}

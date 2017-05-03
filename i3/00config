@@ -160,7 +160,9 @@ for_window [title="^Geary$"] border 1pixel
 for_window [title="^Kerbal Space Program$"] fullscreen
 for_window [class="dota2"] fullscreen
 for_window [class="Civ5XP"] fullscreen
-for_window [class="Terraria"] fullscreen
+for_window [title="Terraria"] fullscreen
+for_window [title="Don't Starve Together"] fullscreen
+for_window [title="EverQuest"] fullscreen
 
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
@@ -170,6 +172,7 @@ exec --no-startup-id /usr/bin/nextcloud
 exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"
 exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
+exec --no-startup-id ~/dotfiles/local/bin/p99-login-middlemand
 
 bindsym $mod+b exec firefox
 

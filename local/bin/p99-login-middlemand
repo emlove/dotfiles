@@ -1,0 +1,8 @@
+#!/bin/bash
+#function closing() {
+#    xrandr --output LVDS-1 --gamma 1:1:1
+#}
+#
+#trap closing SIGINT
+
+~/dotfiles/local/share/p99-login-middlemand

@@ -1,4 +1,4 @@
 #!/bin/bash
 /usr/bin/keepass --lock-all
-#/usr/bin/gdmflexiserver
-/usr/bin/gnome-screensaver-command -l
+/usr/bin/gdmflexiserver
+#/usr/bin/gnome-screensaver-command -l

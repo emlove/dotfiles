@@ -9,8 +9,8 @@ set shiftwidth=4
 set tabstop=4
 
 " Auto indent and smart indent
-set ai
-set si
+set autoindent
+filetype plugin indent on
 
 " Use smart case for text searches
 set ignorecase

@@ -44,3 +44,8 @@ set relativenumber
 set background=dark
 
 set hidden
+
+" Map Ctrl-C to Esc
+vnoremap <C-c> <Esc>
+nnoremap <C-c> <Esc>
+inoremap <C-c> <Esc>

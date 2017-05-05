@@ -3,6 +3,7 @@ ncmpcpp/error.log
 uzbl/config
 i3status/config
 vim/.netrwhist
+nvim/.netrwhist
 *.swp
 local/bin/cookiecutter
 local/bin/pasteurize

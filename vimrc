@@ -49,3 +49,6 @@ set hidden
 vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
+
+" Disable mouse
+set mouse-=a

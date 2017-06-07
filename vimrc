@@ -63,6 +63,7 @@ vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 
+" Buffer navigation
 map gn :bn<cr>
 map gp :bp<cr>
 map gN :bp<cr>

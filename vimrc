@@ -21,6 +21,9 @@ Plugin 'tpope/vim-rhubarb'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -51,6 +54,9 @@ set relativenumber
 set background=dark
 
 set hidden
+
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
 
 " Map Ctrl-C to Esc
 vnoremap <C-c> <Esc>

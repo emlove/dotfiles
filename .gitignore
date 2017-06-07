@@ -5,3 +5,5 @@ i3status/config
 vim/.netrwhist
 nvim/.netrwhist
 *.swp
+vim/bundle
+vim/sessions

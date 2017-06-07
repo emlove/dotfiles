@@ -15,6 +15,12 @@ let g:airline_theme='luna'
 
 Plugin 'flazz/vim-colorschemes'
 
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -50,3 +56,7 @@ set hidden
 vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
+
+map gn :bn<cr>
+map gp :bp<cr>
+map gN :bp<cr>

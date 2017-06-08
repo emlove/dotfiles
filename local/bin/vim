@@ -1,2 +1,6 @@
 #!/usr/bin/env bash
-/usr/local/bin/nvim ${*-`fzf`}
+NVIM=/usr/local/bin/nvim
+if [ ! -f ${NVIM} ] ; then
+    NVIM=/usr/bin/nvim
+fi
+${NVIM} ${*-`fzf`}

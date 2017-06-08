@@ -15,6 +15,15 @@ let g:airline_theme='luna'
 
 Plugin 'flazz/vim-colorschemes'
 
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -45,6 +54,9 @@ set background=dark
 
 set hidden
 
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+
 " Map Ctrl-C to Esc
 vnoremap <C-c> <Esc>
 nnoremap <C-c> <Esc>
@@ -52,3 +64,8 @@ inoremap <C-c> <Esc>
 
 " Disable mouse
 set mouse-=a
+"
+" Buffer navigation
+map gn :bn<cr>
+map gp :bp<cr>
+map gN :bp<cr>

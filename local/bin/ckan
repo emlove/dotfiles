@@ -1,0 +1,2 @@
+#!/bin/sh
+mono ~/.local/opt/ckan.exe

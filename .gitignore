@@ -11,3 +11,4 @@ local/bin/futurize
 vim/bundle
 vim/sessions
 .DS_Store
+gitconfig-local

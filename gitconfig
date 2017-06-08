@@ -1,7 +1,8 @@
 [user]
 	name = Adam Mills
 	email = adam@armills.info
-	signingkey = D1CF78741FB48F9BCA1D1231549DC04888E432E6
+[include]
+    path = ~/dotfiles/gitconfig-local
 [color]
 	diff = auto
 	status = auto

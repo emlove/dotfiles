@@ -17,3 +17,5 @@
 	default = simple
 [commit]
 	gpgsign = true
+[stash]
+    showPatch = true

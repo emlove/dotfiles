@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+DIR=$(git rev-parse --show-toplevel)
+cd "${DIR:-.}"
+ctags -f tags.tmp
+mv tags.tmp tags

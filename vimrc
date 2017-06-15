@@ -24,6 +24,8 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 
+Plugin 'AndrewRadev/sideways.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -69,3 +71,6 @@ set mouse-=a
 map gn :bn<cr>
 map gp :bp<cr>
 map gN :bp<cr>
+
+nnoremap <c-h> :SidewaysLeft<cr>
+nnoremap <c-l> :SidewaysRight<cr>

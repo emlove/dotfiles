@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
-DIR=$(git rev-parse --show-toplevel)
-cd "${DIR:-.}"
-ctags -f tags.tmp
-mv tags.tmp tags
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Exit if piped command has error code
+set -eu -o pipefail
+
+DIR=$(git rev-parse --git-dir)
+trap 'rm -f "${DIR}/tags.tmp"' EXIT
+git ls-files | ctags --tag-relative -L - -f "${DIR}/tags.tmp"
+mv "${DIR}/tags.tmp" "${DIR}/tags"

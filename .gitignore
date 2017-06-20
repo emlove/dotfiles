@@ -12,3 +12,4 @@ vim/bundle
 vim/sessions
 .DS_Store
 gitconfig-local
+local/bin/signal

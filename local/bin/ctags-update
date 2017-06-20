@@ -7,6 +7,5 @@
 set -eu -o pipefail
 
 DIR=$(git rev-parse --git-dir)
-trap 'rm -f "${DIR}/tags.tmp"' EXIT
 git ls-files | ctags --tag-relative -L - -f "${DIR}/tags.tmp"
 mv "${DIR}/tags.tmp" "${DIR}/tags"

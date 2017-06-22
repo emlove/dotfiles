@@ -7,5 +7,23 @@
 set -eu -o pipefail
 
 DIR=$(git rev-parse --git-dir)
-git ls-files | ctags --tag-relative -L - -f "${DIR}/tags.tmp"
-mv "${DIR}/tags.tmp" "${DIR}/tags"
+TEMP=$(mktemp)
+
+# Cleanup temp file on exit
+function finish {
+    [ -f "${TEMP}" ] && rm "${TEMP}"
+}
+trap finish EXIT
+
+# If existing job is in progress kill it
+if [ -f "${DIR}/tags.pid" ] ; then
+    PID=$(cat "${DIR}/tags.pid")
+    kill "${PID}"
+fi
+
+git ls-files | ctags --tag-relative -L - -f "${TEMP}" &
+PID="$!"
+echo "${PID}" > "${DIR}/tags.pid"
+wait "${PID}" && \
+    mv "${TEMP}" "${DIR}/tags" && \
+    rm "${DIR}/tags.pid"

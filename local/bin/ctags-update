@@ -6,8 +6,10 @@
 # -o pipefail   Exit if piped command has error code
 set -eu -o pipefail
 
-DIR=$(git rev-parse --git-dir)
+DIR=$(git rev-parse --absolute-git-dir)
 TEMP=$(mktemp)
+
+cd "${DIR}"
 
 # Cleanup temp file on exit
 function finish {
@@ -21,7 +23,7 @@ if [ -f "${DIR}/tags.pid" ] ; then
     kill "${PID}"
 fi
 
-git ls-files | ctags --tag-relative -L - -f "${TEMP}" &
+git ls-files | sed -e 's#^#../#' | ctags -L - -f "${TEMP}" &
 PID="$!"
 echo "${PID}" > "${DIR}/tags.pid"
 wait "${PID}" && \

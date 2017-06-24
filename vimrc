@@ -31,6 +31,8 @@ filetype plugin indent on
 
 colorscheme luna
 
+let mapleader = ','
+
 " Expand tabs into spaces
 set expandtab
 
@@ -74,3 +76,5 @@ map gN :bp<cr>
 
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
+
+nnoremap <leader>f :GFiles<cr>

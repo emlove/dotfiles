@@ -3,4 +3,4 @@ NVIM=/usr/local/bin/nvim
 if [ ! -f ${NVIM} ] ; then
     NVIM=/usr/bin/nvim
 fi
-${NVIM} ${*-`fzf`}
+${NVIM} ${*-`git ls-files --recurse-submodules | fzf`}

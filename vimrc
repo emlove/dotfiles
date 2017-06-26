@@ -77,4 +77,4 @@ map gN :bp<cr>
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
 
-nnoremap <leader>f :GFiles<cr>
+nnoremap <leader>f :GFiles --recurse-submodules<cr>

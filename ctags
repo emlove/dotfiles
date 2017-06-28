@@ -12,9 +12,10 @@
 --regex-javascript=/^[ \t]*export[ \t]?({[ \t]*)*([A-Za-z0-9_\*]*[ \t]as[ \t])([A-Za-z0-9_]+)/\3/E,Export,Exports/
 --regex-javascript=/^[ \t]*export[ \t]?({[ \t]*)*([A-Za-z0-9_\*]*[ \t]as[ \t])*([A-Za-z0-9_]+),[ \t]*([A-Za-z0-9_\*]*[ \t]as[ \t])([A-Za-z0-9_]+)/\5/E,export,Exports/
 --regex-javascript=/^[ \t]*export[ \t]?({[ \t]*)*([A-Za-z0-9_\*]*[ \t]as[ \t])*([A-Za-z0-9_]+),[ \t]*([A-Za-z0-9_\*]*[ \t]as[ \t])*([A-Za-z0-9_]+),[ \t]*([A-Za-z0-9_\*]*[ \t]as[ \t])([A-Za-z0-9_]+)/\7/E,Export,Exports/
---regex-javascript=/^[ \t]*export[ \t]?(var|let|const)[ \t]+([A_Za-z0-9_$]+)/\2/E,Export,Exports/
---regex-javascript=/^[ \t]*export[ \t]?(var|let|const)[ \t]+([A_Za-z0-9_$]+)[ \t]*[^,]+,[ \t]*([A_Za-z0-9_$]+)/\3/E,Export,Exports/
---regex-javascript=/^[ \t]*export[ \t]?(var|let|const)[ \t]+([A_Za-z0-9_$]+)[ \t]*[^,]+,[ \t]*([A_Za-z0-9_$]+)[ \t]*[^,]+,[ \t]*([A_Za-z0-9_$]+)/\4/E,Export,Exports/
+--regex-javascript=/^[ \t]*export[ \t]?(var|let|const)[ \t]+([A-Za-z0-9_$]+)/\2/E,Export,Exports/
+--regex-javascript=/^[ \t]*export[ \t]?(var|let|const)[ \t]+([A-Za-z0-9_$]+)[ \t]*[^,]+,[ \t]*([A-Za-z0-9_$]+)/\3/E,Export,Exports/
+--regex-javascript=/^[ \t]*export[ \t]?(var|let|const)[ \t]+([A-Za-z0-9_$]+)[ \t]*[^,]+,[ \t]*([A-Za-z0-9_$]+)[ \t]*[^,]+,[ \t]*([A-Za-z0-9_$]+)/\4/E,Export,Exports/
+--regex-javascript=/^[ \t]*export[ \t]?(type)[ \t]+([A-Za-z0-9_$]+)[ \t]*=/\2/C,Class,Classes/
 
 --regex-javascript=/^[ \t]*function[ \t]*([A-Za-z0-9_$]+)[ \t\(]/\1/F,Function,Functions/
 --regex-javascript=/^[ \t]*[\(]function[ \t]*([A-Za-z0-9_$]+)[ \t\(]/\1/F,Function,Functions/
@@ -50,13 +51,14 @@
 --regex-less=/^[ \t]*(@[A-Za-z0-9_-]+):/\1/v,variable,variables/
 --regex-javascript=/\/\/[ \t]*(FIXME|TODO)[ \t]*\:*(.*)/\1/T,Tag,Tags/
 
---languages=PHP
 --langmap=PHP:+.phpt
 --regex-PHP=/abstract class ([^ ]*)/\1/c/
 --regex-PHP=/interface ([^ ]*)/\1/c/
 --regex-PHP=/trait ([^ ]*)/\1/c/
 --regex-PHP=/(public |static |abstract |protected |private )+function +([^ (]*)/\2/f/
 --regex-PHP=/const +([^ ]*)/\1/O/
+
+--languages=PHP,javascript,less
 
 --exclude=.git
 --exclude=.svn

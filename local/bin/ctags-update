@@ -20,7 +20,7 @@ trap finish EXIT
 # If existing job is in progress kill it
 if [ -f "${DIR}/tags.pid" ] ; then
     PID=$(cat "${DIR}/tags.pid")
-    kill "${PID}"
+    kill "${PID}" || true
 fi
 
 git ls-files | sed -e 's#^#../#' | ctags -L - -f "${TEMP}" &

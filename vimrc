@@ -58,6 +58,8 @@ set background=dark
 
 set hidden
 
+set wildmode=longest,list
+
 let g:session_autosave = 'yes'
 let g:session_autoload = 'yes'
 

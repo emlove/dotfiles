@@ -46,6 +46,12 @@ set tabstop=4
 " Auto indent
 set autoindent
 
+" Filetype overrides
+autocmd Filetype json setlocal ts=2 sw=2 sts=2
+autocmd Filetype html setlocal ts=2 sw=2 sts=2
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=2
+autocmd Filetype yaml setlocal ts=2 sw=2 sts=2
+
 " Use smart case for text searches
 set ignorecase
 set smartcase

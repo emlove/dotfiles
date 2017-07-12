@@ -85,4 +85,6 @@ map gN :bp<cr>
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
 
+nnoremap <c-]> :tjump <C-R><C-W><cr>
+
 nnoremap <leader>f :GFiles --recurse-submodules<cr>

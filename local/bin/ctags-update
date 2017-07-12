@@ -23,7 +23,7 @@ if [ -f "${DIR}/tags.pid" ] ; then
     kill "${PID}" || true
 fi
 
-git ls-files | sed -e 's#^#../#' | ctags -L - -f "${TEMP}" &
+(cd ../ && git ls-files --recurse-submodules) | sed -e 's#^#../#' | ctags -L - -f "${TEMP}" &
 PID="$!"
 echo "${PID}" > "${DIR}/tags.pid"
 wait "${PID}" && \

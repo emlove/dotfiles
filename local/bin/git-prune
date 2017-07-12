@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Set error if piped command has error code
+set -eu -o pipefail
+
+MASTER_BRANCH=master
+
+for remote in $(git remote); do
+	BRANCHES=$(git remote prune ${remote} --dry-run)
+
+	# Skip of no branches need to be pruned
+	[ ! "${BRANCHES}" ] && continue
+
+	echo    # separator line
+	read -p "Prune deleted tracking branches from ${remote}? [Y/n]" -n 1 -r
+	echo    # separator line
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		git remote prune ${remote}
+	fi
+
+	echo
+done
+
+BRANCHES=$(git branch --merged ${MASTER_BRANCH} | grep -v '^[ *]*master$' || true)
+
+# Exit if no branches need to be pruned
+[ ! "${BRANCHES}" ] && exit
+
+echo "Pruning branches merged into ${MASTER_BRANCH}"
+echo "${BRANCHES}" | sed -re 's/^ ?/ * [would prune]/'
+
+echo    # separator line
+read -p "Delete branches merged into ${MASTER_BRANCH}? [Y/n]" -n 1 -r
+echo    # separator line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	echo "${BRANCHES}" | xargs git branch -d
+fi

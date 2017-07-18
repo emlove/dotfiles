@@ -14,6 +14,8 @@ for remote in $(git remote); do
 	# Skip of no branches need to be pruned
 	[ ! "${BRANCHES}" ] && continue
 
+	echo "${BRANCHES}"
+
 	echo    # separator line
 	read -p "Prune deleted tracking branches from ${remote}? [Y/n]" -n 1 -r
 	echo    # separator line

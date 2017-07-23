@@ -1,3 +1,3 @@
-source ~/dotfiles/vimrc
+source ~/.vim/vimrc
 
 set termguicolors

@@ -12,13 +12,13 @@
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
-font xft:Ubuntu Sans 8
+font xft:Ubuntu Sans 18
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminology -e tmux
+bindsym $mod+Return exec urxvt -e tmux
 
 # kill focused window
 # bindsym $mod+q kill
@@ -160,7 +160,8 @@ for_window [title="^Kerbal Space Program$"] border pixel 1
 for_window [class="dota2"] fullscreen
 for_window [class="Civ5XP"] fullscreen
 
-output "*" background ~/dotfiles/color-themes/current-theme/wallpaper.png center
+output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.png fit
+output eDP1 scale 2
 
 input 2:7:SynPS/2_Synaptics_TouchPad natural_scroll enabled
 input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
@@ -211,5 +212,5 @@ bar {
         statusline              #d0d0d0
     }
 
-    font                    xft:Ubuntu Sans 8
+    font                    xft:Ubuntu Sans 18
 }

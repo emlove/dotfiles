@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
-font xft:Ubuntu Sans 8
+font xft:Ubuntu Sans 18
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -167,7 +167,6 @@ for_window [title="EverQuest"] fullscreen
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
-exec --no-startup-id /usr/bin/gnome-screensaver
 exec --no-startup-id /usr/bin/nextcloud
 exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"
 exec --no-startup-id ~/dotfiles/i3/reload-colors.sh

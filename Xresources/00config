@@ -4,7 +4,7 @@ URxvt.letterSpace:  -1
 
 Xcursor.theme:      Vanilla-DMZ-AA
 
-Xft.dpi:            96
+Xft.dpi:            192
 Xft.rgba:           rgb
 Xft.antialias:      true
 Xft.hinting:        false

@@ -12,4 +12,4 @@ do
 done
 
 # Apply wallpaper
-feh --no-xinerama --bg-center '/home/adam/dotfiles/color-themes/current-theme/wallpaper.png'
+feh --no-xinerama --bg-fill '/home/adam/dotfiles/color-themes/current-theme/wallpaper.png'

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Set error if piped command has error code
+set -eu -o pipefail
+
+original=$1
+modified="${1%.*}-emoji.${1##*.}"
+if [[ -e "${modified}" ]] ; then
+	echo "${modified} already exists!"
+	exit
+fi
+
+convert "${original}" -resize 128x128\> "${modified}"

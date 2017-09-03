@@ -35,15 +35,17 @@ alias xclip="xclip -selection clipboard"
 alias diff="colordiff"
 
 if command -v beet >/dev/null 2>&1 ; then
-    eval "$(/usr/bin/beet completion)"
+    eval "$(/usr/bin/beet completion)" &
 fi
 
 alias ls="ls -N --color=auto"
 
-source /usr/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh &
 
 export NVM_DIR="/home/adam/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" &  # This loads nvm
 
 export PATH="$HOME/.yarn/bin:$PATH"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" &  # This loads nvm bash_completion
+
+wait

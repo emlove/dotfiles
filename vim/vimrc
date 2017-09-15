@@ -88,3 +88,6 @@ nnoremap <c-l> :SidewaysRight<cr>
 nnoremap <c-]> :tjump <C-R><C-W><cr>
 
 nnoremap <leader>f :GFiles --recurse-submodules<cr>
+
+" Use system clipboard for unnamed register
+set clipboard+=unnamedplus

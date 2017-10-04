@@ -13,4 +13,4 @@ if [[ -e "${modified}" ]] ; then
 	exit
 fi
 
-convert "${original}" -resize 128x128\> "${modified}"
+convert "${original}" -trim -resize 128x128\> "${modified}"

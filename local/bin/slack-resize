@@ -12,6 +12,5 @@ for original in "$@"; do
         echo "${modified} already exists!"
         exit
     fi
-
     convert "${original}" -trim -resize 128x128\> "${modified}"
 done

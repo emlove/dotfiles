@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
-font xft:Ubuntu Sans 18
+font xft:Ubuntu Sans 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -22,7 +22,8 @@ bindsym $mod+Return exec urxvt -e tmux
 
 # kill focused window
 # bindsym $mod+q kill
-bindsym $mod+q exec ~/.local/bin/kill-active-window
+# bindsym $mod+q exec ~/.local/bin/kill-active-window
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec ~/.config/i3/dmenu_run.sh
@@ -161,7 +162,7 @@ for_window [class="dota2"] fullscreen
 for_window [class="Civ5XP"] fullscreen
 
 output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.png fit
-output eDP1 scale 2
+output WLC-1 scale 2
 
 input 2:7:SynPS/2_Synaptics_TouchPad natural_scroll enabled
 input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
@@ -212,5 +213,5 @@ bar {
         statusline              #d0d0d0
     }
 
-    font                    xft:Ubuntu Sans 18
+    font                    xft:Ubuntu Sans 9
 }

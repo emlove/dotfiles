@@ -26,6 +26,8 @@ Plugin 'xolox/vim-session'
 
 Plugin 'AndrewRadev/sideways.vim'
 
+Plugin 'StanAngeloff/php.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -51,6 +53,17 @@ autocmd Filetype json setlocal ts=2 sw=2 sts=2
 autocmd Filetype html setlocal ts=2 sw=2 sts=2
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=2
 autocmd Filetype yaml setlocal ts=2 sw=2 sts=2
+
+" PHP syntax overrides
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+  hi! def link phpStaticClasses phpIdentifier
+endfunction
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
 
 " Use smart case for text searches
 set ignorecase

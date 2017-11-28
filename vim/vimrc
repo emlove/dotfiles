@@ -28,6 +28,11 @@ Plugin 'AndrewRadev/sideways.vim'
 
 Plugin 'StanAngeloff/php.vim'
 
+Plugin 'w0rp/ale'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -104,3 +109,5 @@ nnoremap <leader>f :GFiles --recurse-submodules<cr>
 
 " Use system clipboard for unnamed register
 set clipboard+=unnamedplus
+
+let g:ale_sign_column_always = 1

@@ -191,3 +191,6 @@ bindsym Ctrl+Mod1+a exec "mono /usr/lib64/keepass/KeePass.exe --auto-type"
 bindsym Ctrl+Shift+P exec "firefox --private-window"
 
 assign [class="^KeePass2$" title="^KeePass\.kdbx - KeePass$"] keepass
+
+# Screenshot
+bindsym $mod+Shift+S exec sh -c "gnome-screenshot -i"

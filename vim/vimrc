@@ -33,6 +33,8 @@ Plugin 'w0rp/ale'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
+Plugin 'editorconfig/editorconfig-vim'
+
 call vundle#end()
 filetype plugin indent on
 

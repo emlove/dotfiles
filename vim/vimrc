@@ -82,6 +82,7 @@ set relativenumber
 
 set background=dark
 
+" Allow switching from unsaved buffers
 set hidden
 
 set wildmode=longest,list

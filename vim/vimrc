@@ -114,3 +114,20 @@ nnoremap <leader>f :GFiles --recurse-submodules<cr>
 set clipboard+=unnamedplus
 
 let g:ale_sign_column_always = 1
+
+" Show whitespace characters
+set list
+set listchars=tab:→\ ,space:·
+autocmd ColorScheme * highlight NonText ctermfg=235 guifg=#353535
+
+" Highlight extra whitespace
+autocmd ColorScheme * highlight ExtraWhitespace guifg=#870000 guibg=#ffa40b
+highlight ExtraWhitespace ctermbg=red guibg=red
+
+" Highlight trailing whitespace, spaces before a tab, and tabs not at the
+" start of a line
+match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t"#\/]\zs\t\+/
+" Disable trailing whitespace match in insert mode.
+au InsertEnter * match ExtraWhitespace / \+\ze\t\|[^\t"#\/]\zs\t\+/
+" Reenable when leaving insert
+au InsertLeave * match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t"#\/]\zs\t\+/

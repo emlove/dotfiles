@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/systemctl reboot
+/bin/systemctl reboot

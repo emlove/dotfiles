@@ -131,3 +131,7 @@ match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t"#\/]\zs\t\+/
 au InsertEnter * match ExtraWhitespace / \+\ze\t\|[^\t"#\/]\zs\t\+/
 " Reenable when leaving insert
 au InsertLeave * match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t"#\/]\zs\t\+/
+
+" Disable Ex mode
+map q: <Nop>
+nnoremap Q <nop>

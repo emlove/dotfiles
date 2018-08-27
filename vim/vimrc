@@ -35,6 +35,8 @@ Plugin 'mxw/vim-jsx'
 
 Plugin 'editorconfig/editorconfig-vim'
 
+Plugin 'prettier/vim-prettier'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -144,3 +146,6 @@ au InsertLeave * match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t"#\/]\zs\t\+/
 " Disable Ex mode
 map q: <Nop>
 nnoremap Q <nop>
+
+" Disable mapping of Ctrl-C to SQL completion...
+let g:omni_sql_no_default_maps = 1

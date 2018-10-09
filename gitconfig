@@ -19,3 +19,5 @@
 	gpgsign = true
 [stash]
     showPatch = true
+[url "git@github.com:"]
+    insteadOf = "https://github.com/"

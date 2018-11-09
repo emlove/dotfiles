@@ -1,6 +1,0 @@
-#!/bin/env bash
-if [[ -z "$@" ]] ; then
-    pgrep -f KeePass.exe && /usr/bin/keepass --unlock-all || /usr/bin/keepass
-else
-    /usr/bin/keepass "$@"
-fi

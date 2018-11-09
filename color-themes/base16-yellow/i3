@@ -17,5 +17,5 @@ bar {
         statusline              #111111
     }
 
-    font                    xft:Ubuntu Sans 8
+    font                    xft:Ubuntu Sans 9
 }

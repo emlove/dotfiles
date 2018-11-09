@@ -6,10 +6,8 @@ cat ~/dotfiles/i3status/[0-9][0-9]* > ~/dotfiles/i3status/config
 cat ~/dotfiles/uzbl/[0-9][0-9]* > ~/dotfiles/uzbl/config
 
 # Apply all files in .Xresources
-for f in ~/.Xresources/*
-do
-    xrdb -merge $f
-done
+cat ~/dotfiles/Xresources/* > ~/.Xresources
+xrdb -merge ~/.Xresources
 
 # Apply wallpaper
 feh --no-xinerama --bg-fill '/home/adam/dotfiles/color-themes/current-theme/wallpaper.png'

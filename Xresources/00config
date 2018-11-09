@@ -2,7 +2,8 @@ URxvt.font:         xft:Ubuntu Mono:size=13,xft:DejaVu Sans Mono:size=13,xft:Sym
 URxvt.scrollBar:    false
 URxvt.letterSpace:  -1
 
-Xcursor.theme:      Vanilla-DMZ-AA
+Xcursor.theme:      Adwaita
+Xcursor.size:       48
 
 Xft.dpi:            192
 Xft.rgba:           rgb

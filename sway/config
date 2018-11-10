@@ -175,6 +175,7 @@ input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 # exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"
 # exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 # exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
+exec xrdb ~/.Xresources
 
 bindsym $mod+b exec firefox
 

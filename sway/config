@@ -163,6 +163,7 @@ for_window [class="Civ5XP"] fullscreen
 
 output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.png fit
 output WLC-1 scale 2
+output eDP-1 scale 2
 
 input 2:7:SynPS/2_Synaptics_TouchPad natural_scroll enabled
 input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
@@ -177,7 +178,7 @@ input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 # exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
 exec xrdb ~/.Xresources
 
-bindsym $mod+b exec firefox
+bindsym $mod+b exec ~/.local/bin/firefox
 
 bindsym XF86AudioRaiseVolume exec ~/.local/bin/set-volume --up
 bindsym XF86AudioLowerVolume exec ~/.local/bin/set-volume --down
@@ -190,11 +191,8 @@ bindsym $mod+Shift+Q exec ~/.local/bin/lock-screen
 
 bindsym $mod+t exec ~/.local/bin/xclip-tmux-swap
 
-bindsym Ctrl+Mod1+a exec "mono /usr/lib64/keepass/KeePass.exe --auto-type"
+bindsym Ctrl+Shift+P exec "~/.local/bin/firefox --private-window"
 
-bindsym Ctrl+Shift+P exec "firefox --private-window"
-
-assign [class="^KeePass2$" title="^KeePass\.kdbx - KeePass$"] keepass
 # Color theme
 # class                 border  backgr. text    indictr child_border
 client.focused          #273a79 #273a79 #eeeeee #4e7971 #273a79

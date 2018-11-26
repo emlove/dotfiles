@@ -7,3 +7,4 @@ fi
 if [ -x /usr/bin/gpg-agent ]; then
     eval "$(/usr/bin/gpg-agent --daemon 2>/dev/null)"
 fi
+export GPG_TTY=$(tty)

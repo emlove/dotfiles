@@ -184,6 +184,11 @@ bindsym XF86AudioMute exec "~/.local/bin/set-volume --togmute"
 bindsym XF86PowerOff exec sh -c "~/.local/bin/suspend"
 bindsym XF86Suspend  exec sh -c "~/.local/bin/suspend"
 
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
 bindsym $mod+Shift+Q exec sh -c "~/.local/bin/lock-screen"
 
 bindsym $mod+t exec "~/.local/bin/xclip-tmux-swap"

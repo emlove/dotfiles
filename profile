@@ -8,3 +8,6 @@ if [ -x /usr/bin/gpg-agent ]; then
     eval "$(/usr/bin/gpg-agent --daemon 2>/dev/null)"
 fi
 export GPG_TTY=$(tty)
+if [[ -d "$HOME/src/nutshell/nub" ]]; then
+    eval "$($HOME/src/nutshell/nub/bin/nub init -)"
+fi

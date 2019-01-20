@@ -5,3 +5,10 @@ User=adam
 Host=adam-nas
 Hostname=adam-nas.armills.info
 User=adam
+
+Host 10.10.*
+IdentityFile ~/.ssh/nutshell
+User amills
+
+Host drone417.aws.nutshell.com
+User amills

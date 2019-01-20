@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+# Check if monitor connected
+xrandr | grep '^DP1 connected' -q
+
+if [[ $? == 0 ]] ; then
+    xrandr --output DP1 --auto --right-of eDP1
+else
+    xrandr --output DP1 --auto
+fi

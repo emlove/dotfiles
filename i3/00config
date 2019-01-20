@@ -51,6 +51,18 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# move workspace
+bindsym $mod+Shift+Ctrl+H move workspace to output left
+bindsym $mod+Shift+Ctrl+J move workspace to output down
+bindsym $mod+Shift+Ctrl+K move workspace to output up
+bindsym $mod+Shift+Ctrl+L move workspace to output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Ctrl+Left move workspace to output left
+bindsym $mod+Shift+Ctrl+Down move workspace to output down
+bindsym $mod+Shift+Ctrl+Up move workspace to output up
+bindsym $mod+Shift+Ctrl+Right move workspace to output right
+
 # split in horizontal orientation
 bindsym $mod+Shift+V split h
 
@@ -86,7 +98,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
-bindsym $mod+minus workspace keepass
+bindsym $mod+minus workspace bitwarden
 
 # move focused container to workspace
 bindsym $mod+Shift+exclam move container to workspace 1
@@ -99,14 +111,15 @@ bindsym $mod+Shift+ampersand move container to workspace 7
 bindsym $mod+Shift+asterisk move container to workspace 8
 bindsym $mod+Shift+parenleft move container to workspace 9
 bindsym $mod+Shift+parenright move container to workspace 10
-bindsym $mod+Shift+underscore move container to workspace keepass
+bindsym $mod+Shift+underscore move container to workspace bitwarden
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R exec "~/dotfiles/i3/reload-colors.sh && i3-msg restart"
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+# bindsym $mod+Shift+e exit
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym XF86MonBrightnessUp exec xbacklight -inc 7 -time 0 -steps 1
 bindsym XF86MonBrightnessDown exec xbacklight -dec 6 -time 0 -steps 1
@@ -165,6 +178,7 @@ for_window [title="Don't Starve Together"] fullscreen
 for_window [title="EverQuest"] fullscreen
 for_window [class="eqgame.exe"] fullscreen
 for_window [title="OneLife"] fullscreen
+for_window [class="^Shutter$"] floating enable
 
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
@@ -195,7 +209,7 @@ bindsym $mod+t exec "~/.local/bin/xclip-tmux-swap"
 
 bindsym Ctrl+Shift+P exec "firefox --private-window"
 
-assign [class="^keepassxc$" title="^KeePass.kdbx - KeePassXC$"] keepass
+assign [title="^Bitwarden$"] bitwarden
 
 # Screenshot
-bindsym $mod+Shift+S exec sh -c "gnome-screenshot -i"
+bindsym $mod+Shift+S exec sh -c "/usr/bin/shutter"

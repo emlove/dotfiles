@@ -180,6 +180,7 @@ for_window [class="eqgame.exe"] fullscreen
 for_window [title="OneLife"] fullscreen
 for_window [class="^Shutter$"] floating enable
 
+exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray

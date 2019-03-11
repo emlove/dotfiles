@@ -1,4 +1,2 @@
 #!/bin/bash
-[ -f /usr/bin/keepass ] && /usr/bin/keepass --lock-all
-[ -f /usr/bin/dm-tool ] && [ "$XDG_SEAT_PATH" != "" ] && /usr/bin/dm-tool lock
 [ -f /usr/bin/i3lock ] && /usr/bin/i3lock --tiling --image=/home/adam/dotfiles/color-themes/current-theme/wallpaper.png

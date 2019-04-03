@@ -7,7 +7,7 @@ cat ~/dotfiles/uzbl/[0-9][0-9]* > ~/dotfiles/uzbl/config
 
 # Apply all files in .Xresources
 cat ~/dotfiles/Xresources/* > ~/.Xresources
-xrdb -merge ~/.Xresources
+xrdb -cpp /usr/bin/cpp -merge ~/.Xresources
 
 # Apply wallpaper
 feh --no-xinerama --bg-fill '/home/adam/dotfiles/color-themes/current-theme/wallpaper.png'

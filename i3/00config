@@ -214,3 +214,5 @@ assign [title="^Bitwarden$"] bitwarden
 
 # Screenshot
 bindsym $mod+Shift+S exec sh -c "/usr/bin/shutter"
+
+bindsym $mod+m exec sh -c "~/dotfiles/local/bin/monitor-scan"

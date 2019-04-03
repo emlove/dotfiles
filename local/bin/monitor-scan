@@ -1,10 +1,12 @@
 #!/bin/env bash
 
 # Check if monitor connected
-xrandr | grep '^DP1 connected' -q
+for monitor in DP1 DP2 HDMI3; do
+    xrandr | grep "^${monitor} connected" -q
 
-if [[ $? == 0 ]] ; then
-    xrandr --output DP1 --auto --right-of eDP1
-else
-    xrandr --output DP1 --auto
-fi
+    if [[ $? == 0 ]] ; then
+        xrandr --output ${monitor} --auto --right-of eDP1
+    else
+        xrandr --output ${monitor} --auto
+    fi
+done

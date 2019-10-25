@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
-font xft:Ubuntu Sans 9
+font xft:Ubuntu Sans 18
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -26,7 +26,8 @@ bindsym $mod+Return exec urxvt -e tmux
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec ~/.config/i3/dmenu_run.sh
+bindsym $mod+d exec rofi -show run
+bindsym $mod+o exec rofi -show Window
 
 # change focus
 bindsym $mod+h focus left
@@ -51,6 +52,18 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# move workspace
+bindsym $mod+Shift+Ctrl+H move workspace to output left
+bindsym $mod+Shift+Ctrl+J move workspace to output down
+bindsym $mod+Shift+Ctrl+K move workspace to output up
+bindsym $mod+Shift+Ctrl+L move workspace to output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Ctrl+Left move workspace to output left
+bindsym $mod+Shift+Ctrl+Down move workspace to output down
+bindsym $mod+Shift+Ctrl+Up move workspace to output up
+bindsym $mod+Shift+Ctrl+Right move workspace to output right
 
 # split in horizontal orientation
 bindsym $mod+Shift+V split h
@@ -105,10 +118,10 @@ bindsym $mod+Shift+minus move container to workspace keepass
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+bindsym $mod+Shift+E exec swaynag -t warning -m "Exit Sway?" -b "Exit" "swaymsg exit"
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 7 -time 0 -steps 1
-bindsym XF86MonBrightnessDown exec xbacklight -dec 6 -time 0 -steps 1
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -152,18 +165,29 @@ bindsym $mod+r mode "resize"
 
 focus_follows_mouse no
 
+titlebar_padding 10 1
+
+smart_gaps on
+gaps inner 10
+
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema cursor-theme Adwaita
+    gsettings set $gnome-schema cursor-size 48
+}
+
 # Window specific configurations
 
-for_window [class="urxvt"] border pixel 1
+for_window [class="URxvt"] border pixel 1
 for_window [class="main"] border pixel 1 # terminology
 for_window [title="^Geary$"] border pixel 1
 for_window [title="^Kerbal Space Program$"] border pixel 1
 for_window [class="dota2"] fullscreen
 for_window [class="Civ5XP"] fullscreen
 
-output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.png fit
-output WLC-1 scale 2
-output eDP-1 scale 2
+output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.png fill
+output WLC-1 scale 1 pos 0 0
+output eDP-1 scale 1 pos 3840 0
 
 input 2:7:SynPS/2_Synaptics_TouchPad natural_scroll enabled
 input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
@@ -177,6 +201,8 @@ input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 # exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 # exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
 exec xrdb ~/.Xresources
+
+exec nm-applet --indicator
 
 bindsym $mod+b exec ~/.local/bin/firefox
 
@@ -192,6 +218,8 @@ bindsym $mod+Shift+Q exec ~/.local/bin/lock-screen
 bindsym $mod+t exec ~/.local/bin/xclip-tmux-swap
 
 bindsym Ctrl+Shift+P exec "~/.local/bin/firefox --private-window"
+
+bindsym $mod+Shift+S exec "~/.config/sway/screenshot.sh"
 
 # Color theme
 # class                 border  backgr. text    indictr child_border
@@ -212,5 +240,5 @@ bar {
         statusline              #d0d0d0
     }
 
-    font                    xft:Ubuntu Sans 9
+    font                    xft:Ubuntu Sans 20
 }

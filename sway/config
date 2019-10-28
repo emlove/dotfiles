@@ -26,7 +26,7 @@ bindsym $mod+Return exec urxvt -e tmux
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun
 bindsym $mod+o exec rofi -show Window
 
 # change focus
@@ -195,14 +195,18 @@ input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 # exec --no-startup-id /usr/libexec/gnome-settings-daemon
 # exec --no-startup-id nm-applet
 # exec --no-startup-id udiskie --use-udisks2 --tray
-# exec --no-startup-id /usr/bin/gnome-screensaver
 # exec --no-startup-id /usr/bin/nextcloud
-# exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"
 # exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 # exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
 exec xrdb ~/.Xresources
 
 exec nm-applet --indicator
+
+exec swayidle -w \
+    timeout 1800 'swaylock' \
+    timeout 3600 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock'
 
 bindsym $mod+b exec ~/.local/bin/firefox
 
@@ -210,10 +214,15 @@ bindsym XF86AudioRaiseVolume exec ~/.local/bin/set-volume --up
 bindsym XF86AudioLowerVolume exec ~/.local/bin/set-volume --down
 bindsym XF86AudioMute exec ~/.local/bin/set-volume --togmute
 
-bindsym XF86PowerOff exec ~/.local/bin/suspend
-bindsym XF86Suspend  exec ~/.local/bin/suspend
+bindsym XF86PowerOff exec systemctl suspend
+bindsym XF86Suspend  exec systemctl suspend
 
-bindsym $mod+Shift+Q exec ~/.local/bin/lock-screen
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+
+bindsym $mod+Shift+Q exec swaylock
 
 bindsym $mod+t exec ~/.local/bin/xclip-tmux-swap
 

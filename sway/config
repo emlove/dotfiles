@@ -18,7 +18,7 @@ font xft:Ubuntu Sans 18
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt -e tmux
+bindsym $mod+Return exec kitty tmux
 
 # kill focused window
 # bindsym $mod+q kill
@@ -184,6 +184,8 @@ for_window [title="^Geary$"] border pixel 1
 for_window [title="^Kerbal Space Program$"] border pixel 1
 for_window [class="dota2"] fullscreen
 for_window [class="Civ5XP"] fullscreen
+for_window [app_id="gnome-calculator"] floating enable
+for_window [app_id="kitty"] border pixel 1
 
 output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.png fill
 output WLC-1 scale 1 pos 0 0
@@ -203,8 +205,8 @@ exec xrdb ~/.Xresources
 exec nm-applet --indicator
 
 exec swayidle -w \
-    timeout 1800 'swaylock' \
-    timeout 3600 'swaymsg "output * dpms off"' \
+    timeout 1200 'swaylock' \
+    timeout 1800 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock'
 

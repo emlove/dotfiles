@@ -10,5 +10,9 @@ Host 10.10.*
 IdentityFile ~/.ssh/nutshell
 User amills
 
+Host *.aws.nutshell.com
+IdentityFile ~/.ssh/nutshell
+User amills
+
 Host drone417.aws.nutshell.com
 User amills

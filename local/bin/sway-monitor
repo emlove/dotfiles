@@ -1,0 +1,24 @@
+#!/bin/env bash
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Set error if piped command has error code
+set -eu -o pipefail
+
+cd /proc
+while true; do
+    date | tee -a ~/sway-file-count.log
+    for pid in [0-9]*
+    do
+        if [[ ! -x "/proc/${pid}/fd" ]] ; then
+            continue
+        fi
+        echo "PID = $pid with $(ls /proc/$pid/fd/ | wc -l) file descriptors"
+    done | sort -rn -k5 | head | while read -r _ _ pid _ fdcount _
+    do
+      command=$(ps -o cmd -p "$pid" -hc)
+      printf "pid = %5d with %4d fds: %s\n" "$pid" "$fdcount" "$command" | tee -a ~/sway-file-count.log
+    done
+    sleep 5
+done

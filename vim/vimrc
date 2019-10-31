@@ -37,6 +37,8 @@ Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'prettier/vim-prettier'
 
+Plugin 'norcalli/nvim-colorizer.lua'
+
 call vundle#end()
 filetype plugin indent on
 

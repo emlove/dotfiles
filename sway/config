@@ -187,7 +187,7 @@ for_window [class="Civ5XP"] fullscreen
 for_window [app_id="gnome-calculator"] floating enable
 for_window [app_id="kitty"] border pixel 1
 
-output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.png fill
+output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.jpg fill
 output WLC-1 scale 1 pos 0 0
 output eDP-1 scale 1 pos 3840 0
 

@@ -158,3 +158,6 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " disable folding
 set nofoldenable
+
+autocmd Colorscheme * hi NonText guibg=NONE ctermbg=NONE
+                  \ | hi Normal guibg=NONE ctermbg=NONE

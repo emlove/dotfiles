@@ -15,4 +15,5 @@ IdentityFile ~/.ssh/nutshell
 User amills
 
 Host drone417.aws.nutshell.com
+IdentityFile ~/.ssh/id_rsa
 User amills

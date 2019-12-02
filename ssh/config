@@ -8,11 +8,11 @@ User=adam
 
 Host 10.10.*
 IdentityFile ~/.ssh/nutshell
-User amills
+User ubuntu
 
 Host *.aws.nutshell.com
 IdentityFile ~/.ssh/nutshell
-User amills
+User ubuntu
 
 Host drone417.aws.nutshell.com
 IdentityFile ~/.ssh/id_rsa

@@ -206,6 +206,7 @@ exec xrdb ~/.Xresources
 
 exec nm-applet --indicator
 exec "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
+exec "~/dotfiles/local/bin/sway-smooth-fade.py"
 
 exec swayidle -w \
     timeout 1200 'swaylock' \

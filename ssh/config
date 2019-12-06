@@ -14,6 +14,10 @@ Host *.aws.nutshell.com
 IdentityFile ~/.ssh/nutshell
 User ubuntu
 
+Host *gearman.nutshell.com
+IdentityFile ~/.ssh/nutshell
+User ubuntu
+
 Host drone417.aws.nutshell.com
 IdentityFile ~/.ssh/id_rsa
 User amills

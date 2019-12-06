@@ -205,6 +205,7 @@ input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 exec xrdb ~/.Xresources
 
 exec nm-applet --indicator
+exec "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
 
 exec swayidle -w \
     timeout 1200 'swaylock' \

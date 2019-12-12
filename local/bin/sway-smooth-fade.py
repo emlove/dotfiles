@@ -16,6 +16,11 @@ FADE_TIME  = 0.20     # time taken for fade to complete
 FRAME_T    = 0.01     # time between each opacity change
 
 
+def match_win(win):
+    """Return true if the given window should be adjusted."""
+    return win.app_id == 'kitty'
+
+
 class Fader:
     def __init__(self):
         self.fader_running = False
@@ -30,7 +35,7 @@ class Fader:
         ipc.on(Event.WINDOW_FLOATING, self.on_window_floating)
 
         for win in ipc.get_tree():
-            if not self.match_win(win):
+            if not match_win(win):
                 continue
             if win.focused:
                 change_opacity(win, AC_TRANS)
@@ -39,10 +44,6 @@ class Fader:
                 change_opacity(win, INAC_TRANS)
 
         ipc.main()
-
-    def match_win(self, win):
-        """Return true if the given window should be adjusted."""
-        return win.app_id == 'kitty'
 
 
     def add_fade(self, win, start, target, duration):
@@ -96,26 +97,27 @@ class Fader:
 
 
     def on_window_focus(self, ipc, e):
-        if not self.match_win(e.container):
+        if self.current_win and self.current_win.id == e.container.id:
             return
 
-        if self.current_win.id == e.container.id:
-            return
-
-        if self.current_win.type == 'floating_con':
+        if self.current_win and self.current_win.type == 'floating_con':
             trans = FLOAT_INAC
         else:
             trans = INAC_TRANS
 
         if e.container.id == self.new_win:
-            change_opacity(self.current_win, trans)
-            change_opacity(e.container, AC_TRANS)
+            if self.current_win and match_win(self.current_win):
+                change_opacity(self.current_win, trans)
+            if match_win(e.container):
+                change_opacity(e.container, AC_TRANS)
         else:
-            self.add_fade(self.current_win, AC_TRANS, trans, FADE_TIME)
-            if e.container.type == 'floating_con':
-                self.add_fade(e.container, FLOAT_INAC, AC_TRANS, FADE_TIME)
-            else:
-                self.add_fade(e.container, INAC_TRANS, AC_TRANS, FADE_TIME)
+            if self.current_win and match_win(self.current_win):
+                self.add_fade(self.current_win, AC_TRANS, trans, FADE_TIME)
+            if match_win(e.container):
+                if e.container.type == 'floating_con':
+                    self.add_fade(e.container, FLOAT_INAC, AC_TRANS, FADE_TIME)
+                else:
+                    self.add_fade(e.container, INAC_TRANS, AC_TRANS, FADE_TIME)
             self.start_fader()
 
         self.current_win = e.container
@@ -123,19 +125,16 @@ class Fader:
 
 
     def on_window_new(self, ipc, e):
-        if not self.match_win(e.container):
-            return
-        if e.container.type == 'floating_con':
-            change_opacity(e.container, FLOAT_INAC)
-        else:
-            change_opacity(e.container, INAC_TRANS)
+        if match_win(e.container):
+            if e.container.type == 'floating_con':
+                change_opacity(e.container, FLOAT_INAC)
+            else:
+                change_opacity(e.container, INAC_TRANS)
         self.new_win = e.container.id
 
 
     def on_window_floating(self, ipc, e):
-        if not self.match_win(e.container):
-            return
-        if e.container.id == self.current_win.id:
+        if self.current_win and e.container.id == self.current_win.id:
             self.current_win = e.container
 
 

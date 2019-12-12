@@ -187,6 +187,7 @@ for_window [class="Civ5XP"] fullscreen
 for_window [app_id="gnome-calculator"] floating enable
 for_window [app_id="kitty"] border pixel 1
 for_window [class="^VirtualBox Manager$"] floating enable
+for_window [title="^(Dbeaver|DBeaver )$"] floating enable
 
 output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.jpg fill
 output WLC-1 scale 1 pos 0 0

@@ -1,2 +1,2 @@
 #!/bin/bash
-[ -f /usr/bin/i3lock ] && /usr/bin/i3lock --tiling --image=/home/adam/dotfiles/color-themes/current-theme/wallpaper.png
+[ -f /usr/bin/i3lock ] && /usr/bin/i3lock --tiling --image=/home/emily/dotfiles/color-themes/current-theme/wallpaper.png

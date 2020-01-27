@@ -6,7 +6,7 @@ Host 10.10.*
 IdentityFile ~/.ssh/nutshell
 User ubuntu
 
-Host *.aws.nutshell.com
+Host *.nutshell.com
 IdentityFile ~/.ssh/nutshell
 User ubuntu
 

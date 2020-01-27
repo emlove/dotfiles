@@ -1,6 +1,6 @@
 [user]
-	name = Adam Mills
-	email = adam@armills.info
+	name = Emily Mills
+	email = emily@emlove.me
 [include]
     path = ~/dotfiles/gitconfig-local
 [color]

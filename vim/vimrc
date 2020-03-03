@@ -39,6 +39,8 @@ Plugin 'prettier/vim-prettier'
 
 Plugin 'norcalli/nvim-colorizer.lua'
 
+Plugin 'kamykn/spelunker.vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -127,6 +129,14 @@ nnoremap <leader>f :GFiles --recurse-submodules<cr>
 set clipboard+=unnamedplus
 
 let g:ale_sign_column_always = 1
+
+" Turned spelunker off for the moment because of performance issues with large
+" files
+let g:enable_spelunker_vim = 0
+let g:spelunker_check_type = 1
+
+autocmd ColorScheme * highlight SpelunkerSpellBad cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
+autocmd ColorScheme * highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
 
 " Show whitespace characters
 set list

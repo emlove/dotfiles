@@ -20,7 +20,12 @@ if [ "$TERM" == "screen" ] ; then
     export TERM="screen-256color"
 fi
 
+[[ -f "/usr/bin/virtualenvwrapper_lazy.sh" ]] && source /usr/bin/virtualenvwrapper_lazy.sh
+
 source ~/.profile
+
+export HISTSIZE=20000
+export HISTFILESIZE=20000
 
 set -o vi
 

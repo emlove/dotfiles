@@ -20,6 +20,6 @@ if [[ -d "$HOME/src/nutshell/nub" ]]; then
     eval "$($HOME/src/nutshell/nub/bin/nub init -)"
 fi
 
-if command -v beet >/dev/null 2>&1 ; then
-    eval "$(/usr/bin/beet completion)"
-fi
+# if command -v beet >/dev/null 2>&1 ; then
+#     eval "$(/usr/bin/beet completion)"
+# fi

@@ -2,6 +2,10 @@ Host=emily-nas
 Hostname=emily-nas.emlove.me
 User=emily
 
+Host pr-hoster.aws.nutshell.com
+IdentityFile ~/.ssh/nutshell
+User ec2-user
+
 Host 10.10.*
 IdentityFile ~/.ssh/nutshell
 User ubuntu
@@ -17,3 +21,12 @@ User ubuntu
 Host drone417.aws.nutshell.com
 IdentityFile ~/.ssh/id_rsa
 User amills
+
+Host nsa.nutshell.com
+IdentityFile ~/.ssh/id_ed25519
+User dokku
+
+Host treehouse
+IdentityFile ~/.ssh/treehouse
+Port 23
+User root

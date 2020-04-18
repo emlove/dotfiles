@@ -120,9 +120,6 @@ bindsym $mod+Shift+C reload
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exec swaynag -t warning -m "Exit Sway?" -b "Exit" "swaymsg exit"
 
-bindsym XF86MonBrightnessUp exec light -A 10
-bindsym XF86MonBrightnessDown exec light -U 10
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -189,6 +186,7 @@ for_window [app_id="kitty"] border pixel 1
 for_window [class="^VirtualBox Manager$"] floating enable
 for_window [title="^(Dbeaver|DBeaver )$"] floating enable
 for_window [class="^Slack$"] border pixel 1
+for_window [class="^zoom$" title="^Join a Meeting$"] floating enable
 
 output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.jpg fill
 output WLC-1 scale 1 pos 0 0
@@ -210,6 +208,8 @@ exec nm-applet --indicator
 exec "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
 exec "~/dotfiles/local/bin/sway-smooth-fade.py"
 
+exec /usr/bin/nextcloud
+
 exec swayidle -w \
     timeout 1200 'swaylock' \
     timeout 1800 'swaymsg "output * dpms off"' \
@@ -218,17 +218,20 @@ exec swayidle -w \
 
 bindsym $mod+b exec ~/.local/bin/firefox
 
-bindsym XF86AudioRaiseVolume exec ~/.local/bin/set-volume --up
-bindsym XF86AudioLowerVolume exec ~/.local/bin/set-volume --down
-bindsym XF86AudioMute exec ~/.local/bin/set-volume --togmute
+bindsym --locked XF86AudioRaiseVolume exec ~/.local/bin/set-volume --up
+bindsym --locked XF86AudioLowerVolume exec ~/.local/bin/set-volume --down
+bindsym --locked XF86AudioMute exec ~/.local/bin/set-volume --togmute
 
-bindsym XF86PowerOff exec systemctl suspend
-bindsym XF86Suspend  exec systemctl suspend
+bindsym --locked XF86MonBrightnessUp exec light -A 10
+bindsym --locked XF86MonBrightnessDown exec light -U 10
 
-bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
-bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym --locked XF86PowerOff exec systemctl suspend
+bindsym --locked XF86Suspend  exec systemctl suspend
+
+bindsym --locked XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym --locked XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+bindsym --locked XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym --locked XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 bindsym $mod+Shift+Q exec swaylock
 

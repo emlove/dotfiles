@@ -186,7 +186,6 @@ for_window [app_id="kitty"] border pixel 1
 for_window [class="^VirtualBox Manager$"] floating enable
 for_window [title="^(Dbeaver|DBeaver )$"] floating enable
 for_window [class="^Slack$"] border pixel 1
-for_window [class="^zoom$" title="^Join a Meeting$"] floating enable
 
 output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.jpg fill
 output WLC-1 scale 1 pos 0 0
@@ -214,7 +213,8 @@ exec swayidle -w \
     timeout 1200 'swaylock' \
     timeout 1800 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock'
+    timeout 3600 'systemctl suspend' \
+    before-sleep 'swaylock & (cd ~/src/nutshell/nutshell && vagrant halt)'
 
 bindsym $mod+b exec ~/.local/bin/firefox
 

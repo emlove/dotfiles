@@ -7,6 +7,7 @@
 set -eu -o pipefail
 
 FILE="$(xdg-user-dir PICTURES)/$(date +'Screenshot %Y-%m-%d-%H%M%S.png')"
-grim -g "$(slurp)" "${FILE}"
+SELECTION="$(slurp)"
+grim -g "${SELECTION}" "${FILE}"
 echo "${FILE}"
 wl-copy < "${FILE}"

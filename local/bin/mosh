@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/mosh $* -- tmux new-session -A -s main

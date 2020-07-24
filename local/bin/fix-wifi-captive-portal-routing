@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Set error if piped command has error code
+set -eux -o pipefail
+
+sudo systemctl stop docker.service
+sudo ip route del 172.17.0.0/16

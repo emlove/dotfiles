@@ -186,6 +186,8 @@ for_window [app_id="kitty"] border pixel 1
 for_window [class="^VirtualBox Manager$"] floating enable
 for_window [title="^(Dbeaver|DBeaver )$"] floating enable
 for_window [class="^Slack$"] border pixel 1
+for_window [class="^zoom$"] inhibit_idle visible
+for_window [app_id="^gnucash$" title="^GnuCash$"] floating enable
 
 output "*" bg ~/dotfiles/color-themes/current-theme/wallpaper.jpg fill
 output WLC-1 scale 1 pos 0 0
@@ -195,12 +197,6 @@ output DP-1 scale 1 pos 2880 0
 input 2:7:SynPS/2_Synaptics_TouchPad natural_scroll enabled
 input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 
-# exec --no-startup-id /usr/libexec/gnome-settings-daemon
-# exec --no-startup-id nm-applet
-# exec --no-startup-id udiskie --use-udisks2 --tray
-# exec --no-startup-id /usr/bin/nextcloud
-# exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
-# exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
 exec xrdb ~/.Xresources
 
 exec nm-applet --indicator

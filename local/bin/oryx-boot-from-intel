@@ -1,0 +1,34 @@
+#!/bin/env bash
+
+# Safe bash settings
+# -e            Exit on command fail
+# -u            Exit on unset variable
+# -o pipefail   Set error if piped command has error code
+set -eu -o pipefail
+
+read -r -p "Set up to boot from intel card? [y/N] " response
+if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]] ; then
+    exit 1
+fi
+
+if [[ -d "/etc/X11/xorg.conf.d" ]] && [[ -d "/etc/X11/xorg.conf.d.intel" ]] && [[ ! -d "/etc/X11/xorg.conf.d.nvidia" ]] ; then
+    (
+        set -x
+        sudo mv '/etc/X11/xorg.conf.d' '/etc/X11/xorg.conf.d.nvidia'
+        sudo mv '/etc/X11/xorg.conf.d.intel' '/etc/X11/xorg.conf.d'
+    )
+else
+    echo "Not changing xorg.conf.d files in /etc/X11"
+fi
+
+(
+    set -x
+    sudo eselect opengl set xorg-x11
+)
+
+echo "
+**********************************************
+* Hold F2 after pressing power to enter BIOS *
+*  Change graphics card chipset to MSHYBRID  *
+**********************************************
+"

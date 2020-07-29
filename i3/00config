@@ -178,6 +178,7 @@ for_window [title="Don't Starve Together"] fullscreen
 for_window [title="EverQuest"] fullscreen
 for_window [title="OneLife"] fullscreen
 for_window [class="^Shutter$"] floating enable
+for_window [instance="origin.exe"] floating enable
 
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1 &
 exec --no-startup-id /usr/libexec/gnome-settings-daemon

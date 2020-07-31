@@ -210,7 +210,8 @@ exec swayidle -w \
     timeout 1800 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
     timeout 3600 'systemctl suspend' \
-    before-sleep 'swaylock & (cd ~/src/nutshell/nutshell && vagrant halt)'
+    before-sleep 'swaylock & (cd ~/src/nutshell/nutshell && vagrant halt)' \
+    after-resume 'swaymsg "output * dpms on"'
 
 bindsym $mod+b exec ~/.local/bin/firefox
 

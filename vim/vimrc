@@ -41,6 +41,8 @@ Plugin 'norcalli/nvim-colorizer.lua'
 
 Plugin 'kamykn/spelunker.vim'
 
+Plugin 'stephpy/vim-php-cs-fixer'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -158,6 +160,8 @@ let g:ale_sign_column_always = 1
 let g:enable_spelunker_vim = 0
 let g:spelunker_check_type = 1
 
+let g:php_cs_fixer_path = "./bin/php-cs-fixer"
+
 autocmd ColorScheme * highlight SpelunkerSpellBad cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
 autocmd ColorScheme * highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
 
@@ -187,6 +191,7 @@ let g:omni_sql_no_default_maps = 1
 
 " Prettier autoformat
 let g:prettier#autoformat = 0
+autocmd BufWritePre *.php silent! call PhpCsFixerFixFile()
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.php PrettierAsync
 
 " disable folding

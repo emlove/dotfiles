@@ -191,8 +191,8 @@ let g:omni_sql_no_default_maps = 1
 
 " Prettier autoformat
 let g:prettier#autoformat = 0
-autocmd BufWritePre *.php silent! call PhpCsFixerFixFile()
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*.php PrettierAsync
+autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
 
 " disable folding
 set nofoldenable

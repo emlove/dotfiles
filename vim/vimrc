@@ -41,7 +41,7 @@ Plugin 'norcalli/nvim-colorizer.lua'
 
 Plugin 'kamykn/spelunker.vim'
 
-Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'emlove/vim-php-cs-fixer'
 
 call vundle#end()
 filetype plugin indent on

@@ -161,6 +161,7 @@ let g:enable_spelunker_vim = 0
 let g:spelunker_check_type = 1
 
 let g:php_cs_fixer_path = "./bin/php-cs-fixer"
+let g:php_cs_fixer_path_mode = "intersection"
 
 autocmd ColorScheme * highlight SpelunkerSpellBad cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
 autocmd ColorScheme * highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=160 gui=underline guifg=#de4e4e

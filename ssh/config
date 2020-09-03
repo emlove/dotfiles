@@ -1,11 +1,6 @@
 Host=emily-nas
 Hostname=emily-nas.emlove.me
 User=emily
-Port=23
-
-Host=emily-nas.emlove.me
-User=emily
-Port=23
 
 Host pr-hoster.aws.nutshell.com
 IdentityFile ~/.ssh/nutshell

@@ -43,6 +43,8 @@ Plugin 'kamykn/spelunker.vim'
 
 Plugin 'emlove/vim-php-cs-fixer'
 
+Plugin 'psf/black'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -155,6 +157,9 @@ let g:clipboard = {
 
 let g:ale_sign_column_always = 1
 
+let g:ale_linters = {
+\   'python': ['black', 'flake8', 'pylint'],
+\}
 " Turned spelunker off for the moment because of performance issues with large
 " files
 let g:enable_spelunker_vim = 0
@@ -196,6 +201,9 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 
 " php-cs-fixer autoformat
 autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+
+" Python formatter
+autocmd BufWritePre *.py execute ':Black'
 
 " disable folding
 set nofoldenable

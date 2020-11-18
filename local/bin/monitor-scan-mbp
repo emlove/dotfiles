@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+# Check if monitor connected
+for monitor in HDMI3; do
+    xrandr | grep "^${monitor} connected" -q
+
+    if [[ $? == 0 ]] ; then
+        xrandr --output ${monitor} --auto --right-of eDP1
+    else
+        xrandr --output ${monitor} --auto
+    fi
+done

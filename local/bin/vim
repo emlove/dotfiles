@@ -1,6 +1,2 @@
-#!/usr/bin/env bash
-NVIM=/usr/local/bin/nvim
-if [ ! -f ${NVIM} ] ; then
-    NVIM=/usr/bin/nvim
-fi
-${NVIM} ${*}
+#!/bin/sh
+nvim "$@"

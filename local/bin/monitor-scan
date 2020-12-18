@@ -1,0 +1,9 @@
+#!/bin/env bash
+
+SCRIPT_DIR=$(dirname "$0")
+
+if [[ "$(hostname)" == "emily-mbp" ]] ; then
+    $SCRIPT_DIR/monitor-scan-mbp $*
+else
+    $SCRIPT_DIR/monitor-scan-oryx
+fi

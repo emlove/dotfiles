@@ -8,6 +8,4 @@ set -eu -o pipefail
 
 FILE="$(xdg-user-dir PICTURES)/$(date +'Screenshot %Y-%m-%d-%H%M%S.png')"
 SELECTION="$(slurp)"
-grim -g "${SELECTION}" "${FILE}"
-echo "${FILE}"
-wl-copy < "${FILE}"
+grim -g "${SELECTION}" - | swappy -f - -o "${FILE}"

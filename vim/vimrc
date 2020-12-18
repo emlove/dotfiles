@@ -58,6 +58,9 @@ set expandtab
 " Use smart tabs
 set smarttab
 
+" Faster response time
+set lazyredraw
+
 " Tab length = 4 spaces
 set shiftwidth=4
 set tabstop=4

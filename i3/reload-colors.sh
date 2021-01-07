@@ -10,4 +10,4 @@ cat ~/dotfiles/Xresources/* > ~/.Xresources
 xrdb -cpp /usr/bin/cpp -merge ~/.Xresources
 
 # Apply wallpaper
-feh --no-xinerama --bg-fill '/home/emily/dotfiles/color-themes/current-theme/wallpaper.png'
+feh --no-xinerama --bg-fill '/home/emily/dotfiles/color-themes/current-theme/wallpaper.jpg'

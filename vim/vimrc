@@ -213,3 +213,6 @@ set nofoldenable
 
 autocmd Colorscheme * hi NonText guibg=NONE ctermbg=NONE
                   \ | hi Normal guibg=NONE ctermbg=NONE
+
+" Disable netrw file browser
+let loaded_netrwPlugin = 1

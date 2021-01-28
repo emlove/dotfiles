@@ -201,10 +201,12 @@ input 2:7:SynPS/2_Synaptics_TouchPad click_method clickfinger
 
 exec xrdb ~/.Xresources
 
+exec mako
 exec nm-applet --indicator
 exec "/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 exec "~/dotfiles/local/bin/sway-smooth-fade.py"
+exec "~/dotfiles/local/bin/batteryd"
 
 exec /usr/bin/nextcloud
 

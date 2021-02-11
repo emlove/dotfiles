@@ -150,8 +150,8 @@ let g:clipboard = {
       \      '*': 'wl-copy --foreground --type text/plain --primary',
       \    },
       \   'paste': {
-      \      '+': {-> systemlist('wl-paste -t UTF8_STRING | tr -d "\r"')},
-      \      '*': {-> systemlist('wl-paste -t UTF8_STRING --primary | tr -d "\r"')},
+      \      '+': {-> systemlist('(wl-paste -t UTF8_STRING 2>/dev/null || wl-paste -t text ) | tr -d "\r"')},
+      \      '*': {-> systemlist('(wl-paste -t UTF8_STRING 2>/dev/null || wl-paste -t text ) | tr -d "\r"')},
       \   },
       \   'cache_enabled': 1,
       \ }

@@ -9,6 +9,7 @@ User ec2-user
 Host 10.10.*
 IdentityFile ~/.ssh/nutshell
 User ubuntu
+StrictHostKeyChecking no
 
 Host *.nutshell.com
 IdentityFile ~/.ssh/nutshell

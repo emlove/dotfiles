@@ -1,12 +1,26 @@
 #!/bin/env bash
 
 # Check if monitor connected
-for monitor in DP-1 DP-2 DP-3 HDMI3; do
+EXTERNAL_MONITOR="NO"
+for monitor in DP-1 DP-2 DP-3 HDMI-0; do
     xrandr | grep "^${monitor} connected" -q
 
     if [[ $? == 0 ]] ; then
         xrandr --output ${monitor} --auto --right-of DP-0
+        EXTERNAL_MONITOR="YES"
     else
-        xrandr --output ${monitor} --auto
+        xrandr --output ${monitor} --auto --off
     fi
 done
+
+if grep -q closed /proc/acpi/button/lid/LID0/state ; then
+    # Lid closed
+    xrandr --output DP-0 --auto --off
+else
+    # Lid open
+    xrandr --output DP-0 --auto
+
+    if [[ "${EXTERNAL_MONITOR}" == "NO" ]] ; then
+        xrandr --output DP-0 --panning 3840x2160+0+0
+    fi
+fi

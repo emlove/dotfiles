@@ -121,8 +121,11 @@ bindsym $mod+Shift+R exec "~/dotfiles/i3/reload-colors.sh && i3-msg restart"
 # bindsym $mod+Shift+e exit
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-bindsym XF86MonBrightnessUp exec xbacklight -inc 7 -time 0 -steps 1
-bindsym XF86MonBrightnessDown exec xbacklight -dec 6 -time 0 -steps 1
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 7 -time 0 -steps 0
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 6 -time 0 -steps 0
+
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -185,7 +188,7 @@ exec --no-startup-id /usr/libexec/gnome-settings-daemon
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie --use-udisks2 --tray
 exec --no-startup-id /usr/bin/nextcloud
-exec --no-startup-id xautolock -time 10 -locker "~/.local/bin/lock-screen"
+exec --no-startup-id xautolock -time 60 -locker "~/.local/bin/lock-screen"
 exec --no-startup-id ~/dotfiles/i3/reload-colors.sh
 exec --no-startup-id ~/dotfiles/local/bin/lightsOn.sh 570
 exec --no-startup-id ~/dotfiles/local/bin/p99-login-middlemand

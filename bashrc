@@ -43,9 +43,13 @@ alias ls="ls -N --color=auto"
 
 # export NVM_DIR="/home/emily/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# 
 # export PATH="$HOME/.yarn/bin:$PATH"
+#
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 if [[ -d "$HOME/source/nub" ]]; then
     eval "$($HOME/source/nub/bin/nub init -)"
+fi
+
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]]; then
+    exec tmux new-session -A -s default
 fi

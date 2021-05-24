@@ -212,11 +212,13 @@ exec "~/dotfiles/local/bin/batteryd"
 exec /usr/bin/nextcloud
 
 exec swayidle -w \
+    timeout 180 'sudo /usr/local/bin/emerge-unthrottle' \
+        resume 'sudo /usr/local/bin/emerge-throttle' \
     timeout 1200 'swaylock' \
     timeout 1800 'swaymsg "output * dpms off"' \
         resume 'swaymsg "output * dpms on"' \
     timeout 3600 'systemctl suspend' \
-    before-sleep 'swaylock && pkill zoom && (cd ~/src/nutshell/nutshell && vagrant halt)'
+    before-sleep 'swaylock && (cd ~/src/nutshell/nutshell && vagrant halt)'
 
 bindswitch --locked --reload lid:off output eDP-1 enable
 bindswitch --locked --reload lid:on output eDP-1 disable
@@ -245,6 +247,8 @@ bindsym $mod+t exec ~/.local/bin/xclip-tmux-swap
 bindsym Ctrl+Shift+P exec "~/.local/bin/firefox --private-window"
 
 bindsym $mod+Shift+S exec "~/.config/sway/screenshot.sh"
+
+bindsym XF86HomePage exec true
 
 # Color theme
 # class                 border  backgr. text    indictr child_border

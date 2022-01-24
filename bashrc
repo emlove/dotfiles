@@ -27,6 +27,8 @@ source ~/.profile
 export HISTSIZE=20000
 export HISTFILESIZE=20000
 
+export SYSTEMD_EDITOR=vim
+
 set -o vi
 
 alias cplayer="CACA_DRIVER=ncurses mplayer -vo caca -quiet"

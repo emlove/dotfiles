@@ -1,4 +1,4 @@
-source ~/.vim/vimrc
+source ~/.vimrc
 
 set termguicolors
 

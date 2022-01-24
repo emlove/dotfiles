@@ -1,25 +1,28 @@
 [user]
-	name = Emily Mills
-	email = emily@emlove.me
+    name = Emily Love Mills
+    email = emily@emlove.me
 [include]
     path = ~/dotfiles/gitconfig-local
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
 [merge]
-[merge]
-[merge]
-	tool = vimdiff
+    tool = vimdiff
 [core]
-	autocrlf = input
+    autocrlf = input
+    editor = nvim
+[pull]
+    rebase = true
 [push]
-	default = simple
+    default = simple
 [commit]
-	gpgsign = true
+    gpgsign = true
 [stash]
     showPatch = true
 [url "git@github.com:"]
     insteadOf = "https://github.com/"
 [init]
-	templateDir = /home/emily/dotfiles/git-template
+	templateDir = ~/dotfiles/git-template
+[credential]
+	helper = /bin/bash /app/git-credential-helper.sh

@@ -26,8 +26,6 @@ Plugin 'xolox/vim-session'
 
 Plugin 'AndrewRadev/sideways.vim'
 
-Plugin 'StanAngeloff/php.vim'
-
 Plugin 'w0rp/ale'
 
 Plugin 'pangloss/vim-javascript'
@@ -41,9 +39,14 @@ Plugin 'norcalli/nvim-colorizer.lua'
 
 Plugin 'kamykn/spelunker.vim'
 
-Plugin 'emlove/vim-php-cs-fixer'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rbenv'
+Plugin 'tpope/vim-bundler'
 
 Plugin 'psf/black'
+
+Plugin 'nvim-treesitter/nvim-treesitter'
 
 call vundle#end()
 filetype plugin indent on
@@ -73,26 +76,6 @@ autocmd Filetype json setlocal ts=2 sw=2 sts=2
 autocmd Filetype html setlocal ts=2 sw=2 sts=2
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=2
 autocmd Filetype yaml setlocal ts=2 sw=2 sts=2
-
-" PHP syntax overrides
-function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
-  hi! def link phpStaticClasses phpIdentifier
-endfunction
-augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
-augroup END
-
-" Disable slow syntax in php.vim
-" See https://github.com/StanAngeloff/php.vim/issues/68
-let php_html_load = 0
-let php_html_in_heredoc = 0
-let php_html_in_nowdoc = 0
-let php_sql_query = 0
-let php_sql_heredoc = 0
-let php_sql_nowdoc = 0
 
 " Use smart case for text searches
 set ignorecase
@@ -134,29 +117,14 @@ nnoremap <c-]> :tjump <C-R><C-W><cr>
 
 nnoremap <leader>f :GFiles --recurse-submodules<cr>
 
-" Use system clipboard for unnamed register
-set clipboard+=unnamedplus
+" yank to clipboard
+if has("clipboard")
+  set clipboard=unnamed " copy to the system clipboard
 
-" Wayland clipboard provider that strips carriage returns (GTK3 issue).
-" This is needed because currently there's an issue where GTK3 applications on
-" Wayland contain carriage returns at the end of the lines (this is a root
-" issue that needs to be fixed).
-" See: https://github.com/neovim/neovim/issues/10223#issuecomment-521952122
-" See: https://gitlab.gnome.org/GNOME/gtk/issues/2307
-let g:clipboard = {
-      \   'name': 'wayland-strip-carriage',
-      \   'copy': {
-      \      '+': 'wl-copy --foreground --type text/plain',
-      \      '*': 'wl-copy --foreground --type text/plain --primary',
-      \    },
-      \   'paste': {
-      \      '+': {-> systemlist('(wl-paste -t UTF8_STRING 2>/dev/null || wl-paste -t text ) | tr -d "\r"')},
-      \      '*': {-> systemlist('(wl-paste -t UTF8_STRING 2>/dev/null || wl-paste -t text ) | tr -d "\r"')},
-      \   },
-      \   'cache_enabled': 1,
-      \ }
-
-
+  if has("unnamedplus") " X11 support
+    set clipboard+=unnamedplus
+  endif
+endif
 
 let g:ale_sign_column_always = 1
 
@@ -168,15 +136,12 @@ let g:ale_linters = {
 let g:enable_spelunker_vim = 0
 let g:spelunker_check_type = 1
 
-let g:php_cs_fixer_path = "./bin/php-cs-fixer"
-let g:php_cs_fixer_path_mode = "intersection"
-
 autocmd ColorScheme * highlight SpelunkerSpellBad cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
 autocmd ColorScheme * highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
 
 " Show whitespace characters
 set list
-set listchars=tab:→\ ,space:·
+set listchars=tab:→\
 autocmd ColorScheme * highlight NonText ctermfg=235 guifg=#353535
 
 " Highlight extra whitespace
@@ -195,16 +160,6 @@ au InsertLeave * match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t"#\/]\zs\t\+/
 map q: <Nop>
 nnoremap Q <nop>
 
-" Disable mapping of Ctrl-C to SQL completion...
-let g:omni_sql_no_default_maps = 1
-
-" Prettier autoformat
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html,*php Prettier
-
-" php-cs-fixer autoformat
-autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
-
 " Python formatter
 autocmd BufWritePre *.py execute ':Black'
 
@@ -216,3 +171,33 @@ autocmd Colorscheme * hi NonText guibg=NONE ctermbg=NONE
 
 " Disable netrw file browser
 let loaded_netrwPlugin = 1
+
+filetype plugin indent on
+syntax on
+
+set hlsearch
+
+" https://github.com/neovim/neovim/issues/4524#issuecomment-234823996
+set hid
+
+" Always show error gutter on left. (Avoid column flickering)
+set signcolumn=yes
+
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#exec_cmd_async = 1
+let g:prettier#config#arrow_parens = 'avoid'
+
+let g:prettier#config#arrow_parens = get(g:,'prettier#config#arrow_parens', 'always')
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+  indent = {
+    enable = true,
+  },
+}
+EOF

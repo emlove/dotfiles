@@ -58,8 +58,6 @@
 --regex-PHP=/(public |static |abstract |protected |private )+function +([^ (]*)/\2/f/
 --regex-PHP=/const +([^ ]*)/\1/O/
 
---languages=PHP,javascript,less
-
 --exclude=.git
 --exclude=.svn
 --exclude=.hg

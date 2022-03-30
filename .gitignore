@@ -8,7 +8,7 @@ nvim/.netrwhist
 local/bin/cookiecutter
 local/bin/pasteurize
 local/bin/futurize
-vim/bundle
+vim/plugged
 vim/sessions
 .DS_Store
 gitconfig-local

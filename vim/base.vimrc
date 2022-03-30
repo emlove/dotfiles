@@ -1,57 +1,38 @@
-set nocompatible
-filetype off
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'xiyaowong/nvim-transparent'
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='luna'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'lewis6991/spellsitter.nvim'
 
-Plugin 'flazz/vim-colorschemes'
+Plug 'rmagatti/auto-session'
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
+Plug 'AndrewRadev/sideways.vim'
 
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
 
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
+Plug 'gpanders/editorconfig.nvim'
 
-Plugin 'AndrewRadev/sideways.vim'
+Plug 'sbdchd/neoformat'
 
-Plugin 'w0rp/ale'
+Plug 'norcalli/nvim-colorizer.lua'
 
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
-Plugin 'editorconfig/editorconfig-vim'
+call plug#end()
 
-Plugin 'prettier/vim-prettier'
-
-Plugin 'norcalli/nvim-colorizer.lua'
-
-Plugin 'kamykn/spelunker.vim'
-
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rbenv'
-Plugin 'tpope/vim-bundler'
-
-Plugin 'psf/black'
-
-Plugin 'nvim-treesitter/nvim-treesitter'
-
-call vundle#end()
-filetype plugin indent on
-
-colorscheme luna
+set termguicolors
+let g:tokyonight_transparent = 1
+let g:tokyonight_style = "night"
+colorscheme tokyonight
 
 let mapleader = ','
 
@@ -71,12 +52,6 @@ set tabstop=4
 " Auto indent
 set autoindent
 
-" Filetype overrides
-autocmd Filetype json setlocal ts=2 sw=2 sts=2
-autocmd Filetype html setlocal ts=2 sw=2 sts=2
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=2
-autocmd Filetype yaml setlocal ts=2 sw=2 sts=2
-
 " Use smart case for text searches
 set ignorecase
 set smartcase
@@ -93,9 +68,6 @@ set hidden
 set wildmode=longest,list
 
 set tags^=.git/tags;~
-
-let g:session_autosave = 'yes'
-let g:session_autoload = 'yes'
 
 " Map Ctrl-C to Esc
 vnoremap <C-c> <Esc>
@@ -115,7 +87,7 @@ nnoremap <c-l> :SidewaysRight<cr>
 
 nnoremap <c-]> :tjump <C-R><C-W><cr>
 
-nnoremap <leader>f :GFiles --recurse-submodules<cr>
+nnoremap <leader>f :Telescope find_files<cr>
 
 " yank to clipboard
 if has("clipboard")
@@ -127,25 +99,18 @@ if has("clipboard")
 endif
 
 let g:ale_sign_column_always = 1
-
 let g:ale_linters = {
 \   'python': ['black', 'flake8', 'pylint'],
+\   'ruby': [],
 \}
-" Turned spelunker off for the moment because of performance issues with large
-" files
-let g:enable_spelunker_vim = 0
-let g:spelunker_check_type = 1
-
-autocmd ColorScheme * highlight SpelunkerSpellBad cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
-autocmd ColorScheme * highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=160 gui=underline guifg=#de4e4e
 
 " Show whitespace characters
 set list
-set listchars=tab:→\
-autocmd ColorScheme * highlight NonText ctermfg=235 guifg=#353535
+set listchars=tab:→\ ,
+highlight NonText ctermfg=235 guifg=#353535
 
 " Highlight extra whitespace
-autocmd ColorScheme * highlight ExtraWhitespace guifg=#870000 guibg=#ffa40b
+highlight ExtraWhitespace guifg=#870000 guibg=#ffa40b
 highlight ExtraWhitespace ctermbg=red guibg=red
 
 " Highlight trailing whitespace, spaces before a tab, and tabs not at the
@@ -160,20 +125,14 @@ au InsertLeave * match ExtraWhitespace /\s\+$\| \+\ze\t\|[^\t"#\/]\zs\t\+/
 map q: <Nop>
 nnoremap Q <nop>
 
-" Python formatter
-autocmd BufWritePre *.py execute ':Black'
-
 " disable folding
 set nofoldenable
 
-autocmd Colorscheme * hi NonText guibg=NONE ctermbg=NONE
-                  \ | hi Normal guibg=NONE ctermbg=NONE
+highlight NonText guibg=NONE ctermbg=NONE
+highlight Normal guibg=NONE ctermbg=NONE
 
 " Disable netrw file browser
 let loaded_netrwPlugin = 1
-
-filetype plugin indent on
-syntax on
 
 set hlsearch
 
@@ -183,12 +142,20 @@ set hid
 " Always show error gutter on left. (Avoid column flickering)
 set signcolumn=yes
 
-let g:prettier#autoformat_config_present = 1
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#exec_cmd_async = 1
-let g:prettier#config#arrow_parens = 'avoid'
+let g:neoformat_try_node_exe = 1
+let g:neoformat_enabled_ruby = []
 
-let g:prettier#config#arrow_parens = get(g:,'prettier#config#arrow_parens', 'always')
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
+set spell
+
+nm <silent> <F1> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
+    \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name")
+    \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
+    \ . ">"<CR>
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -200,4 +167,83 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+
+end
+
+nvim_lsp["solargraph"].setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    solargraph = {
+      autoformat = false,
+      formatting = false,
+      completion = false,
+      diagnostic = false,
+      folding = false,
+      references = false,
+      rename = false,
+      symbols = false,
+    }
+  },
+}
+
+require('telescope').setup {}
+require('telescope').load_extension('fzf')
+require('spellsitter').setup()
+require('auto-session').setup {}
+require("transparent").setup({
+    enable = true,
+    extra_groups = {
+        "TelescopeNormal",
+        "TelescopeBorder",
+    },
+})
+
+vim.g.tokyonight_transparent = 1
+
+-- Disable rubocop diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+
+
+require('lualine').setup {
+    options = {
+        theme = "tokyonight",
+    }
+}
+
 EOF

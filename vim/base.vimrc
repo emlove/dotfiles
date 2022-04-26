@@ -3,9 +3,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'xiyaowong/nvim-transparent'
 
-Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'romgrk/barbar.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -22,10 +23,15 @@ Plug 'gpanders/editorconfig.nvim'
 Plug 'sbdchd/neoformat'
 
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'ruifm/gitlinker.nvim'
+
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', { 'branch': 'artifacts'}
 
 call plug#end()
 
@@ -70,24 +76,34 @@ set wildmode=longest,list
 set tags^=.git/tags;~
 
 " Map Ctrl-C to Esc
-vnoremap <C-c> <Esc>
-nnoremap <C-c> <Esc>
-inoremap <C-c> <Esc>
+noremap <C-c> <Esc>
+noremap <C-c> <Esc>
+noremap <C-c> <Esc>
 
 " Disable mouse
 set mouse-=a
 "
 " Buffer navigation
-map gn :bn<cr>
-map gp :bp<cr>
-map gN :bp<cr>
+map gn :BufferNext<cr>
+map gp :BufferPrevious<cr>
+map gN :BufferPrevious<cr>
 
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
 
-nnoremap <c-]> :tjump <C-R><C-W><cr>
+nnoremap <c-]> :Telescope lsp_definitions<cr>
 
-nnoremap <leader>f :Telescope find_files<cr>
+nnoremap <leader>ff :Telescope find_files<cr>
+nnoremap <leader>fg :Telescope live_grep<cr>
+nnoremap <leader>fb :Telescope buffers<cr>
+nnoremap <leader>fr :Telescope lsp_references<cr>
+
+nnoremap <leader>gc :Telescope git_branches<cr>
+nnoremap <leader>gg :Telescope git_status<cr>
+nnoremap <leader>gv :Telescope git_stash<cr>
+
+" Space to select auto completion
+imap <expr> <space> pumvisible() && complete_info().selected != -1 ? '<cr>' : '<space>'
 
 " yank to clipboard
 if has("clipboard")
@@ -147,21 +163,16 @@ let g:neoformat_enabled_ruby = []
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre * undojoin | Neoformat
+  autocmd BufWritePre * Neoformat
 augroup END
 
 set spell
 
-nm <silent> <F1> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
-    \ . '> trans<' . synIDattr(synID(line("."),col("."),0),"name")
-    \ . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name")
-    \ . ">"<CR>
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "all",
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true, -- false will disable the whole extension
   },
   indent = {
     enable = true,
@@ -169,41 +180,43 @@ require'nvim-treesitter.configs'.setup {
 }
 
 local nvim_lsp = require('lspconfig')
+local coq = require "coq"
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+local xible_volume_change = function(client, bufnr)
+  local function map(mode, l, r, opts)
+    opts = opts or {}
+    opts.buffer = bufnr
+    vim.keymap.set(mode, l, r, opts)
+  end
 
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
-
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  map('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+  map('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+  map('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
+  map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  map('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  map('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+  map('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+  map('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+  map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+  map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
+  map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+  map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+  map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+  map('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+  map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
 
 end
 
-nvim_lsp["solargraph"].setup {
+vim.cmd('COQnow --shut-up')
+nvim_lsp.solargraph.setup(coq.lsp_ensure_capabilities({
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
@@ -220,9 +233,24 @@ nvim_lsp["solargraph"].setup {
       symbols = false,
     }
   },
-}
+}))
+nvim_lsp.eslint.setup(coq.lsp_ensure_capabilities({
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+}))
 
-require('telescope').setup {}
+require('telescope').setup {
+    defaults = {
+        file_ignore_patterns = { ".git" }
+    },
+    pickers = {
+        find_files = {
+            hidden = true,
+        },
+    },
+}
 require('telescope').load_extension('fzf')
 require('spellsitter').setup()
 require('auto-session').setup {}
@@ -231,6 +259,12 @@ require("transparent").setup({
     extra_groups = {
         "TelescopeNormal",
         "TelescopeBorder",
+        "BufferInactive",
+        "BufferInactiveSign",
+        "BufferTabpageFill",
+        "BufferInactive",
+        "BufferInactive",
+        "BufferOffset",
     },
 })
 
@@ -245,5 +279,52 @@ require('lualine').setup {
         theme = "tokyonight",
     }
 }
+require('gitsigns').setup{
+  on_attach = function(bufnr)
+    local gs = package.loaded.gitsigns
 
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Mappings.
+    local opts = { noremap=true, silent=true }
+
+    -- Actions
+    map('n', '<leader>gs', ':Gitsigns stage_hunk<CR>')
+    map('v', '<leader>gs', ':Gitsigns stage_hunk<CR>')
+    map('n', '<leader>gr', ':Gitsigns reset_hunk<CR>')
+    map('v', '<leader>gr', ':Gitsigns reset_hunk<CR>')
+    map('n', '<leader>gS', gs.stage_buffer)
+    map('n', '<leader>gu', gs.undo_stage_hunk)
+    map('n', '<leader>gR', gs.reset_buffer)
+    map('n', '<leader>gp', gs.preview_hunk)
+    map('n', '<leader>gb', function() gs.blame_line{full=true} end)
+    map('n', '<leader>gd', gs.diffthis)
+    map('n', '<leader>gD', function() gs.diffthis('~') end)
+    map('n', '<leader>gtd', gs.toggle_deleted)
+
+    -- Text object
+    map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+    map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  end
+}
+require"gitlinker".setup({
+  opts = {
+    action_callback = require"gitlinker.actions".open_in_browser,
+    print_url = false,
+  },
+  mappings = "<leader>gy"
+})
+
+-- Set barbar's options
+vim.g.bufferline = {
+  closable = false,
+  clickable = false,
+  -- If true, new buffers will be inserted at the start/end of the list.
+  -- Default is to insert after current buffer.
+  insert_at_end = true,
+}
 EOF

@@ -26,3 +26,5 @@
 	templateDir = ~/dotfiles/git-template
 [credential]
 	helper = /bin/bash /app/git-credential-helper.sh
+[safe]
+	directory = /etc/etcfiles

@@ -4,6 +4,7 @@ export ANDROID_SDK_PATH="/opt/android-sdk-update-manager"
 export XCURSOR_THEME="Adwaita"
 export XCURSOR_SIZE="48"
 export BROWSER="firefox"
+export TERMINFO_DIRS="$TERMINFO_DIRS:$HOME/.local/share/terminfo"
 
 # https://bugzilla.rpmfusion.org/show_bug.cgi?id=5383#c19
 export QT_QPA_PLATFORM=xcb

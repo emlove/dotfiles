@@ -10,6 +10,7 @@ Plug 'romgrk/barbar.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
 Plug 'lewis6991/spellsitter.nvim'
 
 Plug 'rmagatti/auto-session'
@@ -28,7 +29,10 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 Plug 'ruifm/gitlinker.nvim'
+
+Plug 'AckslD/nvim-neoclip.lua'
 
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', { 'branch': 'artifacts'}
@@ -36,8 +40,6 @@ Plug 'ms-jpq/coq.artifacts', { 'branch': 'artifacts'}
 call plug#end()
 
 set termguicolors
-let g:tokyonight_transparent = 1
-let g:tokyonight_style = "night"
 colorscheme tokyonight
 
 let mapleader = ','
@@ -94,9 +96,10 @@ nnoremap <c-l> :SidewaysRight<cr>
 nnoremap <c-]> :Telescope lsp_definitions<cr>
 
 nnoremap <leader>ff :Telescope find_files<cr>
-nnoremap <leader>fg :Telescope live_grep<cr>
+nnoremap <leader>fg :lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>
 nnoremap <leader>fb :Telescope buffers<cr>
 nnoremap <leader>fr :Telescope lsp_references<cr>
+nnoremap <leader>fc :Telescope neoclip<cr>
 
 nnoremap <leader>gc :Telescope git_branches<cr>
 nnoremap <leader>gg :Telescope git_status<cr>
@@ -159,7 +162,7 @@ set hid
 set signcolumn=yes
 
 let g:neoformat_try_node_exe = 1
-let g:neoformat_enabled_ruby = []
+let g:neoformat_enabled_ruby = ['prettier']
 
 augroup fmt
   autocmd!
@@ -175,8 +178,15 @@ require'nvim-treesitter.configs'.setup {
     enable = true, -- false will disable the whole extension
   },
   indent = {
-    enable = true,
+    enable = false,
   },
+}
+
+vim.g.coq_settings = {
+    auto_start = 'shut-up',
+    keymap = {
+        jump_to_mark = ''
+    }
 }
 
 local nvim_lsp = require('lspconfig')
@@ -206,7 +216,6 @@ local xible_volume_change = function(client, bufnr)
   map('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
   map('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
   map('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
   map('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
   map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
   map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
@@ -215,7 +224,6 @@ local xible_volume_change = function(client, bufnr)
 
 end
 
-vim.cmd('COQnow --shut-up')
 nvim_lsp.solargraph.setup(coq.lsp_ensure_capabilities({
   on_attach = on_attach,
   flags = {
@@ -225,7 +233,7 @@ nvim_lsp.solargraph.setup(coq.lsp_ensure_capabilities({
     solargraph = {
       autoformat = false,
       formatting = false,
-      completion = false,
+      completion = true,
       diagnostic = false,
       folding = false,
       references = false,
@@ -240,18 +248,45 @@ nvim_lsp.eslint.setup(coq.lsp_ensure_capabilities({
     debounce_text_changes = 150,
   },
 }))
+require('neoclip').setup({
+    default_register = "+",
+})
 
-require('telescope').setup {
+local telescope = require('telescope')
+local lga_actions = require('telescope-live-grep-args.actions')
+
+telescope.load_extension('fzf')
+telescope.load_extension('neoclip')
+telescope.setup {
     defaults = {
-        file_ignore_patterns = { ".git" }
-    },
+        file_ignore_patterns = { '.git/' },
+        vimgrep_arguments = {
+          'rg',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
+          '--hidden',
+        },
+        },
     pickers = {
         find_files = {
             hidden = true,
         },
     },
+    extensions = {
+        live_grep_args = {
+            mappings = {
+                i = {
+                  ["<C-g>"] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
+                  ["<C-t>"] = lga_actions.quote_prompt({ postfix = ' --type ' }),
+                }
+            }
+        },
+    },
 }
-require('telescope').load_extension('fzf')
 require('spellsitter').setup()
 require('auto-session').setup {}
 require("transparent").setup({
@@ -267,8 +302,10 @@ require("transparent").setup({
         "BufferOffset",
     },
 })
-
-vim.g.tokyonight_transparent = 1
+require("tokyonight").setup({
+    style = "night",
+    transparent = true,
+})
 
 -- Disable rubocop diagnostics
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
@@ -280,6 +317,7 @@ require('lualine').setup {
     }
 }
 require('gitsigns').setup{
+  current_line_blame = true,
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
 
@@ -305,6 +343,7 @@ require('gitsigns').setup{
     map('n', '<leader>gd', gs.diffthis)
     map('n', '<leader>gD', function() gs.diffthis('~') end)
     map('n', '<leader>gtd', gs.toggle_deleted)
+    map('n', '<leader>gtb', gs.toggle_current_line_blame)
 
     -- Text object
     map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
@@ -327,4 +366,5 @@ vim.g.bufferline = {
   -- Default is to insert after current buffer.
   insert_at_end = true,
 }
+
 EOF

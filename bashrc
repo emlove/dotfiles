@@ -74,10 +74,6 @@ export EDITOR="${VISUAL}"
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-if [ -d ~/.rbenv ] ; then
-    eval "$(rbenv init -)"
-fi
-
 # Allow Ctrl-S and Ctrl-Q to passthrough to the terminal. This allows the
 # Ctrl-S hotkey to be used during bash reverse history search
 stty -ixon
@@ -85,9 +81,9 @@ stty -ixon
 export GPG_TTY=$(tty)
 
 # Homechef
-export PATH="/usr/local/opt/openssl@1.1/bin:/usr/local/opt/postgresql@11/bin/:$PATH"
-export LDFLAGS="${LDFLAGS} -L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/postgresql@11/lib -L/usr/local/opt/libffi/lib"
-export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/openssl@1.1/include -I/usr/local/opt/postgresql@11/include -I/usr/local/opt/libffi/include"
+export PATH="/usr/local/opt/openssl@1.1/bin:/usr/local/opt/postgresql@11/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/postgresql@11/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include -I/usr/local/opt/postgresql@11/include"
 
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
@@ -108,3 +104,7 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/share/python:$PATH"
 
 [[ -f "/usr/local/bin/python3" ]] && export VIRTUALENVWRAPPER_PYTHON="/usr/local/bin/python3"
+
+if [ -d ~/.rbenv ] ; then
+    eval "$(rbenv init -)"
+fi

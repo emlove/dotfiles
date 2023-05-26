@@ -20,8 +20,12 @@ if [ "$TERM" == "screen" ] ; then
     export TERM="screen-256color"
 fi
 
+export PATH="/usr/local/sbin:$PATH"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 PATH="~/.local/opt/android-platform-tools:$PATH"
+
+export ANDROID_HOME=/Users/emilylovemills/Library/Android/sdk
+export PATH="/Users/emilylovemills/Library/Android/sdk/platform-tools:$PATH"
 
 # Gentoo's default PS1
 # Change the window title of X terminals
@@ -81,9 +85,9 @@ stty -ixon
 export GPG_TTY=$(tty)
 
 # Homechef
-export PATH="/usr/local/opt/openssl@1.1/bin:/usr/local/opt/postgresql@11/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/postgresql@11/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include -I/usr/local/opt/postgresql@11/include"
+export PATH="/usr/local/opt/openssl@1.1/bin:/usr/local/opt/postgresql@14/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/postgresql@14/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include -I/usr/local/opt/postgresql@14/include"
 
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
@@ -110,3 +114,5 @@ export PATH="/usr/local/share/python:$PATH"
 if [ -d ~/.rbenv ] ; then
     eval "$(rbenv init -)"
 fi
+
+source /Users/emilylovemills/.docker/init-bash.sh || true # Added by Docker Desktop

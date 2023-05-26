@@ -28,3 +28,8 @@
 	helper = /bin/bash /app/git-credential-helper.sh
 [safe]
 	directory = /etc/etcfiles
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

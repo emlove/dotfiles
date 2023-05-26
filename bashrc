@@ -50,7 +50,7 @@ source ~/.profile
 export HISTSIZE=20000
 export HISTFILESIZE=20000
 
-export SYSTEMD_EDITOR=vim
+export SYSTEMD_EDITOR=nvim
 
 set -o vi
 
@@ -72,7 +72,7 @@ export LANG=en_US.UTF-8
 export VISUAL="nvim"
 export EDITOR="${VISUAL}"
 
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && source "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Allow Ctrl-S and Ctrl-Q to passthrough to the terminal. This allows the
 # Ctrl-S hotkey to be used during bash reverse history search
@@ -87,9 +87,11 @@ export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include -I/usr/local/opt/postgresq
 
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [[ -e "$HOME/.nvm" ]] ; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
 
 # Launch tmux
 if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] ; then

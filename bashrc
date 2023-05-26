@@ -84,11 +84,6 @@ stty -ixon
 
 export GPG_TTY=$(tty)
 
-# Homechef
-export PATH="/usr/local/opt/openssl@1.1/bin:/usr/local/opt/postgresql@14/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib -L/usr/local/opt/postgresql@14/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include -I/usr/local/opt/postgresql@14/include"
-
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 if [[ -e "$HOME/.nvm" ]] ; then
@@ -114,5 +109,3 @@ export PATH="/usr/local/share/python:$PATH"
 if [ -d ~/.rbenv ] ; then
     eval "$(rbenv init -)"
 fi
-
-source /Users/emilylovemills/.docker/init-bash.sh || true # Added by Docker Desktop

@@ -11,7 +11,6 @@ Plug 'romgrk/barbar.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground'
-Plug 'lewis6991/spellsitter.nvim'
 
 Plug 'rmagatti/auto-session'
 
@@ -287,10 +286,8 @@ telescope.setup {
         },
     },
 }
-require('spellsitter').setup()
 require('auto-session').setup {}
 require("transparent").setup({
-    enable = true,
     extra_groups = {
         "TelescopeNormal",
         "TelescopeBorder",
@@ -358,13 +355,14 @@ require"gitlinker".setup({
   mappings = "<leader>gy"
 })
 
--- Set barbar's options
-vim.g.bufferline = {
-  closable = false,
+require'barbar'.setup({
   clickable = false,
   -- If true, new buffers will be inserted at the start/end of the list.
   -- Default is to insert after current buffer.
   insert_at_end = true,
-}
+  icons = {
+      button = false,
+  },
+})
 
 EOF

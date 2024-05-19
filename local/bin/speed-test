@@ -1,2 +1,2 @@
 #!/bin/sh
-curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test1000.zip
+curl -o /dev/null http://ipv4.download.thinkbroadband.com/1GB.zip

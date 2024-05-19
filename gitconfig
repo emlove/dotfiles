@@ -1,5 +1,5 @@
 [user]
-    name = Emily Love Mills
+    name = Emily Love Watson
     email = emily@emlove.me
 [include]
     path = ~/dotfiles/gitconfig-local
@@ -28,6 +28,7 @@
 	helper = /bin/bash /app/git-credential-helper.sh
 [safe]
 	directory = /etc/etcfiles
+	directory = /usr/share/hassio/homeassistant
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

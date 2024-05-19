@@ -75,6 +75,7 @@ export LANG=en_US.UTF-8
 
 export VISUAL="nvim"
 export EDITOR="${VISUAL}"
+export SYSTEMD_EDITOR="${VISUAL}"
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && source "/usr/local/etc/profile.d/bash_completion.sh"
 

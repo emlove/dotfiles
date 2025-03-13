@@ -94,7 +94,7 @@ if [[ -e "$HOME/.nvm" ]] ; then
 fi
 
 # Launch tmux
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] ; then
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -z "$INTELLIJ_ENVIRONMENT_READER" ]] ; then
     LAST_DETACHED_SESSION=$(tmux ls -F '#{session_name}|#{?session_attached,attached,not attached}' 2>/dev/null | grep 'not attached$' | tail -n 1 | cut -d '|' -f1)
     if [[ -z "$LAST_DETACHED_SESSION" ]] ; then
         exec tmux new-session
